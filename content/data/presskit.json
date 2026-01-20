@@ -1,0 +1,39 @@
+{
+  "boilerplate": "Team Voltage 386 is an FRC robotics team based at Melbourne High School in Brevard County, Florida. We design, build, and program full-scale competition robots while developing student leaders who drive STEAM education and measurable community impact across the Space Coast.",
+  "colors": [
+    { "name": "Primary Yellow", "value": "#FFE800", "usage": "Accents, calls to action, highlights" },
+    { "name": "Primary Blue", "value": "#0429D2", "usage": "Headlines, backgrounds, buttons" },
+    { "name": "Secondary Navy", "value": "#1A2D83", "usage": "Overlays, cards, navigation" },
+    { "name": "Secondary Light Blue", "value": "#00A0F0", "usage": "Links, hover states" },
+    { "name": "Neutral Gray", "value": "#BDBDBD", "usage": "Dividers, body text support" }
+  ],
+  "fonts": {
+    "headline": "Anton",
+    "body": "Roboto"
+  },
+  "logos": [
+    {
+      "name": "Primary Lockup",
+      "file": "/images/brand/team-voltage-logo.png",
+      "usage": "Full-color mark for light backgrounds",
+      "background": "light"
+    },
+    {
+      "name": "Varmint Mark Placeholder",
+      "file": "/images/brand/varmint-placeholder.svg",
+      "usage": "Replace with official Varmint graphic for secondary branding",
+      "background": "dark"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Brand Guidelines",
+      "url": "/documents/brand_standards.pdf"
+    },
+    {
+      "label": "Sponsorship Packet",
+      "url": "/documents/sponsorship_packet.pdf"
+    }
+  ],
+  "usageNotes": "Do not stretch, rotate, or recolor the Team Voltage marks. Maintain clear space equal to the width of the lightning bolt, and use the Varmint mark only as a supporting element."
+}

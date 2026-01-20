@@ -1,65 +1,192 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import CTAButton from '@/components/ui/CTAButton';
+import SectionHeader from '@/components/ui/SectionHeader';
+import StatsRow from '@/components/ui/StatsRow';
+import InstagramEmbed from '@/components/social/InstagramEmbed';
+import { getLinks, getMetrics, getSponsors, getTeamData } from '@/lib/content';
 
-export default function Home() {
+export default async function HomePage() {
+  const [team, metrics, sponsors, links] = await Promise.all([
+    getTeamData(),
+    getMetrics(),
+    getSponsors(),
+    getLinks()
+  ]);
+
+  const sponsorLogos = sponsors.tiers.flatMap((tier) => tier.sponsors).slice(0, 8);
+  const locationParts = team.meeting.location.split(',');
+  const locationName = locationParts.shift()?.trim() ?? team.meeting.location;
+  const scheduleParts = team.meeting.schedule.split(',');
+  scheduleParts.shift();
+  const meetingTime = scheduleParts.join(', ').trim();
+  const meetingTimeText = meetingTime || team.meeting.schedule;
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto max-w-6xl space-y-16 px-4 py-10 lg:space-y-24 lg:px-6">
+      <section className="glass-panel rounded-3xl border border-white/10 bg-gradient-to-r from-primary/30 via-primary/10 to-surface/70 p-8 text-white">
+        <div className="space-y-6 text-white/90">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">↓ Upcoming Voltage Nights ↓</p>
+          <div className="space-y-3 text-white dark:text-white">
+            <h1 className="font-display text-4xl text-white">Team voltage meets every Monday</h1>
+            <p className="text-base leading-relaxed text-foreground dark:text-white/90">
+              Drop in between <span className="font-semibold">{meetingTimeText}</span> at {locationName}. Tour the shop,
+              hang out with subsystem mentors, and see how we prep Voltage robots for competition.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Before you visit</p>
+              <p className="mt-2 text-sm text-foreground dark:text-white/85">
+                Park near the Melbourne High auditorium off Bulldog Blvd (across from Chicken Salad Chick) and follow the
+                signage to the shop entrance.
+              </p>
+              {team.meeting.mapUrl && (
+                <Link href={team.meeting.mapUrl} target="_blank" className="mt-3 inline-block text-sm font-semibold">
+                  Open campus map →
+                </Link>
+              )}
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Bring your forms</p>
+              <p className="mt-2 text-sm text-foreground dark:text-white/85">
+                Safety, travel, and handbook paperwork must be signed before we add you to the roster.
+              </p>
+              <div className="mt-3">
+                <CTAButton href="/resources#forms" label="View forms" variant="outline" />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Stay in the loop</p>
+              <p className="mt-2 text-sm text-foreground dark:text-white/85">
+                Submit the interest form and see upcoming onboarding nights, outreach events, and competitions.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <CTAButton href={links.joinForm} label="Interest form" />
+                <CTAButton href="/calendar" label="See calendar" variant="outline" />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-4 text-sm font-semibold">
+            <Link href={`mailto:${team.contact.email}`} className="text-white hover:text-accent">
+              Questions? Email us
+            </Link>
+            <Link href="/resources/join-team" className="text-white hover:text-accent">
+              Learn how joining works →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="glass-panel rounded-3xl border border-white/10 bg-card/70 p-8">
+          <div className="space-y-4 text-center text-white/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Follow Voltage</p>
+            <h2 className="font-display text-3xl text-white">Live from @teamvoltage386</h2>
+            <p className="text-sm">
+              Highlights from Monday build nights, Sparky’s STEAM Camp, and competition pits update in real time.
+            </p>
+          </div>
+          <div className="mt-6 flex justify-center">
+            <InstagramEmbed className="w-full max-w-xl" />
+          </div>
+        </div>
+      </section>
+
+      <section className="glass-panel grid gap-10 rounded-3xl p-8 lg:grid-cols-2">
+        <div className="space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+            Voltage 386
           </p>
+          <h2 className="font-display text-4xl text-foreground drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]">
+            Team Voltage 386 builds precise robots and future-ready student leaders.
+          </h2>
+          <p className="text-lg text-muted">
+            Precision engineering, high-energy competition, and measurable community impact power every season.
+            Join us to design, code, and drive world-class robots from Melbourne, Florida.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <CTAButton href="/resources/join-team" label="Join the Team" />
+            <CTAButton href="/sponsors" label="Sponsor Voltage" variant="outline" />
+          </div>
+          <StatsRow metrics={metrics} />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className="glass-card rounded-3xl border border-white/10 bg-card/80 p-4">
+          <Image
+            src="/images/robots/robot-2025.png"
+            alt="Team Voltage robot driving at competition"
+            width={900}
+            height={700}
+            className="h-full w-full rounded-2xl object-cover"
+            priority
+          />
+        </div>
+      </section>
+
+      <section>
+        <SectionHeader
+          eyebrow="Sponsors"
+          title="Partners powering Voltage"
+          description={sponsors.deadlineNote}
+        />
+        <div className="glass-panel mt-6 grid gap-4 rounded-3xl border border-white/10 bg-card/70 p-6 sm:grid-cols-2 lg:grid-cols-4">
+          {sponsorLogos.map((sponsor) => (
+            <div key={sponsor.name} className="flex items-center justify-center rounded-2xl bg-white/5 p-3">
+              {sponsor.logo ? (
+                <Image
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={200}
+                  height={120}
+                  className="h-16 w-auto object-contain"
+                />
+              ) : (
+                <p className="text-sm font-semibold text-white">{sponsor.name}</p>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 flex gap-4">
+          <CTAButton href="/sponsors" label="View sponsor tiers" />
+          <CTAButton href="/donate" label="Donate" variant="outline" />
+        </div>
+      </section>
+
+      <section className="space-y-8">
+        <div className="glass-panel rounded-3xl border border-white/10 bg-card/70 p-6">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Mission Statement</p>
+          <h3 className="mt-2 text-2xl font-display text-white">Why Voltage builds</h3>
+          <p className="mt-3 text-sm text-white/80">{team.missionStatement}</p>
+        </div>
+        <div className="glass-panel grid gap-8 rounded-3xl border border-white/10 bg-surface/70 p-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-4 text-foreground dark:text-white/85">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">What is FIRST Robotics Competition?</p>
+            <p className="text-sm">
+              The FIRST Robotics Competition pairs high school students with adult mentors—including engineers, teachers,
+              and industry professionals—to design, build, and program industrial-sized robots. Each season introduces a
+              brand-new game that demands rapid prototyping, collaboration, and strategic thinking under tight deadlines.
+            </p>
+            <p className="text-sm">
+              Students sharpen project management, public speaking, and outreach skills alongside their technical
+              training. The program mirrors real-world engineering environments and lives by Gracious Professionalism™, so
+              even in high-stakes matches teams treat one another with respect and empathy.
+            </p>
+            <p className="text-sm">
+              It’s not just about building robots—it’s about cultivating future-ready leaders, creative problem-solvers,
+              and STEM changemakers.
+            </p>
+            <CTAButton href="https://www.firstinspires.org/robotics/frc" label="Learn more about FIRST" variant="outline" />
+          </div>
+          <div className="glass-card overflow-hidden rounded-3xl border border-white/10 bg-black/20">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/images/media/event-1.jpg"
+              alt="Voltage students demoing robots at a FIRST event"
+              width={900}
+              height={600}
+              className="h-full w-full object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }

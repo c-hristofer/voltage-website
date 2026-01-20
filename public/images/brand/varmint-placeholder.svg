@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" role="img" aria-label="Varmint mark placeholder">
+  <rect width="400" height="200" rx="24" fill="#0429D2" />
+  <text x="50%" y="50%" text-anchor="middle" fill="#FFE800" font-family="Arial, sans-serif" font-size="28" font-weight="700" dy="10">Varmint Mark</text>
+  <text x="50%" y="75%" text-anchor="middle" fill="#FFE800" font-family="Arial, sans-serif" font-size="16">Upload official asset</text>
+</svg>

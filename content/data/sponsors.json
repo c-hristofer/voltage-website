@@ -1,0 +1,97 @@
+{
+  "payment": {
+    "payableTo": "Brevard Schools Foundation",
+    "memo": "Team 386",
+    "mailingAddress": "Brevard Schools Foundation, 2700 Judge Fran Jamieson Way, Viera, FL 32940"
+  },
+  "deadlineNote": "Logos for shirts, robots, and banners must be received by January 15.",
+  "tiers": [
+    {
+      "name": "Einstein",
+      "amountRange": "$7,000+",
+      "minAmount": 7000,
+      "benefits": [
+        "On-site company demonstrations (upon request)",
+        "Team Voltage-exclusive content for your social channels and website",
+        "Premier exposure on Team Voltage social media",
+        "Name on FIRST team profile",
+        "Company name/logo displayed on robot (X-Large)",
+        "Company name/logo displayed on competition banner (artwork due January 15)",
+        "Company name/logo displayed on team shirt (artwork due January 15)",
+        "Company name/logo displayed on team website",
+        "Thank-you card with signed team photo",
+        "Monthly update newsletter"
+      ],
+      "sponsors": [
+        { "name": "NASA", "logo": "/images/sponsors/nasa.png" },
+        { "name": "L3Harris", "logo": "/images/sponsors/l3harris.png" },
+        { "name": "Leonardo DRS", "logo": "/images/sponsors/leonardo-drs.jpg" }
+      ]
+    },
+    {
+      "name": "Newton",
+      "amountRange": "$5,000 - $6,999",
+      "minAmount": 5000,
+      "benefits": [
+        "Name on FIRST team profile",
+        "Company name/logo displayed on robot (Large)",
+        "Company name/logo displayed on competition banner (artwork due January 15)",
+        "Company name/logo displayed on team shirt (artwork due January 15)",
+        "Company name/logo displayed on team website",
+        "Thank-you card with signed team photo",
+        "Monthly update newsletter"
+      ],
+      "sponsors": [
+        { "name": "Boeing", "logo": "/images/sponsors/boeing.png" },
+        { "name": "Haas Automation", "logo": "/images/sponsors/haas.png" }
+      ]
+    },
+    {
+      "name": "Curie",
+      "amountRange": "$2,500 - $4,999",
+      "minAmount": 2500,
+      "benefits": [
+        "Company name/logo displayed on robot (Medium)",
+        "Company name/logo displayed on competition banner (artwork due January 15)",
+        "Company name/logo displayed on team shirt (artwork due January 15)",
+        "Company name/logo displayed on team website",
+        "Thank-you email"
+      ],
+      "sponsors": [
+        { "name": "Avidyne", "logo": "/images/sponsors/avidyne.png" },
+        { "name": "Atemis", "logo": "/images/sponsors/atemis.png" },
+        { "name": "Anna's Air & Heat", "logo": "/images/sponsors/annas-air-heat.jpg" }
+      ]
+    },
+    {
+      "name": "Galileo",
+      "amountRange": "$1,000 - $2,499",
+      "minAmount": 1000,
+      "benefits": [
+        "Company name/logo displayed on robot (Small)",
+        "Company name/logo displayed on team shirt (artwork due January 15)",
+        "Company name/logo displayed on team website",
+        "Thank-you email"
+      ],
+      "sponsors": [
+        { "name": "CCCS", "logo": "/images/sponsors/cccs.png" },
+        { "name": "Reef", "logo": "/images/sponsors/reef.png" },
+        { "name": "Badger Meter", "logo": "/images/sponsors/badger-meter.png" }
+      ]
+    },
+    {
+      "name": "Carver",
+      "amountRange": "$500 - $999",
+      "minAmount": 500,
+      "benefits": [
+        "Company name/logo displayed on team website (X-small)",
+        "Thank-you email"
+      ],
+      "sponsors": [
+        { "name": "Florida Breeze", "logo": "/images/sponsors/florida-breeze.png" },
+        { "name": "NASA Alumni League", "logo": "/images/sponsors/nasa-alumni.png" },
+        { "name": "Budco Enterprises", "logo": "/images/sponsors/budco.png" }
+      ]
+    }
+  ]
+}

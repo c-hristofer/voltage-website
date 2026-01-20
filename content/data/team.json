@@ -1,0 +1,205 @@
+{
+  "name": "Team Voltage",
+  "number": 386,
+  "shortName": "Voltage 386",
+  "siteUrl": "https://www.teamvoltage.org",
+  "missionStatement": "Our mission is to empower students to explore the exciting world of Science, Technology, Engineering, Arts, and Mathematics (STEAM) while fostering a lifelong journey of self-discovery. Through the values of Gracious Professionalism™ and a commitment to teamwork, innovation, and integrity, we aim to inspire and develop the next generation of ethical, enlightened leaders.",
+  "meeting": {
+    "schedule": "Every Monday, 6:00 PM – 8:00 PM",
+    "location": "Melbourne High School, 74 Bulldog Blvd, Melbourne, FL 32901",
+    "parkingNote": "Park in front of the school near the auditorium (south side). Parking lot entrance off Bulldog Blvd across from Chicken Salad Chick.",
+    "mapUrl": "https://maps.app.goo.gl/rD7WeKeS9aaGwu1b7"
+  },
+  "contact": {
+    "email": "teamvoltage386@gmail.com",
+    "mailingAddress": "Team Voltage 386, c/o Melbourne High School, 74 Bulldog Blvd, Melbourne, FL 32901"
+  },
+  "values": [
+    {
+      "title": "Precision",
+      "description": "We engineer dependable mechanisms and code with a focus on quality, safety, and competitive readiness."
+    },
+    {
+      "title": "Energy",
+      "description": "Voltage 386 brings high-powered enthusiasm to every event, demo, and outreach moment."
+    },
+    {
+      "title": "Engineering",
+      "description": "Students collaborate with professional mentors to apply rigorous engineering processes from concept through competition."
+    },
+    {
+      "title": "Community Impact",
+      "description": "We mentor younger teams, run Sparky’s STEAM Camp, and deliver programs that uplift Brevard County."
+    }
+  ],
+  "season": {
+    "year": 2026,
+    "game": "REBUILT",
+    "presentedBy": "Haas",
+    "summary": "We are designing a robust REBUILT robot with faster scoring cycles, higher reliability, and a transparent data pipeline so new students can own the game strategy.",
+    "goals": [
+      "Consistently rank in the top 8 at both regional events",
+      "Deploy an adaptive autonomous routine for every alliance partner",
+      "Expand season media coverage to unlock two new Einstein-level sponsors"
+    ],
+    "events": [
+      "Orlando Regional",
+      "South Florida Regional",
+      "FIRST Championship (goal)"
+    ]
+  },
+  "history": [
+    {
+      "year": 1998,
+      "title": "Scorpsquad Roots",
+      "description": "Team 248 “Scorpsquad” at Satellite High set the foundation for what would become Team Voltage."
+    },
+    {
+      "year": 1999,
+      "title": "County-Wide Collaboration",
+      "description": "Students from multiple Brevard schools united to solve sponsorship challenges and formed Team Voltage 386."
+    },
+    {
+      "year": 2002,
+      "title": "Advocates for FIRST",
+      "description": "Voltage presented to the Brevard County School Board, inspiring a district-wide push for FRC and FLL teams."
+    },
+    {
+      "year": 2006,
+      "title": "Melbourne High Home Base",
+      "description": "The team relocated to Melbourne High School, establishing the build space we still occupy today."
+    },
+    {
+      "year": 2011,
+      "title": "FLL Host Team",
+      "description": "We began hosting local FIRST LEGO League tournaments, mentoring dozens of younger teams."
+    },
+    {
+      "year": 2017,
+      "title": "Championship Return",
+      "description": "After major fundraising improvements, Voltage returned to FIRST Championship in Houston."
+    },
+    {
+      "year": 2024,
+      "title": "Community Programs Expand",
+      "description": "Sparky’s STEAM Camp and year-round outreach events now serve hundreds of students annually."
+    }
+  ],
+  "leadership": [
+    {
+      "role": "Team Captain",
+      "name": "Avery Lin",
+      "focus": "Strategy & Drive",
+      "bio": "Coordinates match strategy, drive team practice, and cross-team communication so every subsystem is competition-ready.",
+      "photo": "/images/placeholders/leader.svg"
+    },
+    {
+      "role": "Engineering Director",
+      "name": "Miguel Ramirez",
+      "focus": "Mechanical & CAD",
+      "bio": "Leads design reviews, maintains the CAD release schedule, and mentors students on precision build techniques.",
+      "photo": "/images/placeholders/leader.svg"
+    },
+    {
+      "role": "Electrical & Controls Lead",
+      "name": "Priya Shah",
+      "focus": "Controls",
+      "bio": "Owns robot wiring standards, sensor validation, and documentation for handoff between pit and programming crews.",
+      "photo": "/images/placeholders/leader.svg"
+    },
+    {
+      "role": "Programming Lead",
+      "name": "Ethan Garber",
+      "focus": "Software",
+      "bio": "Guides autonomous development, scouting integrations, and runtime analytics for the REBUILT season.",
+      "photo": "/images/placeholders/leader.svg"
+    },
+    {
+      "role": "Operations & Impact",
+      "name": "Lena Briggs",
+      "focus": "Outreach",
+      "bio": "Runs communications, sponsorship deliverables, and Sparky’s STEAM Camp logistics with a student-led crew.",
+      "photo": "/images/placeholders/leader.svg"
+    }
+  ],
+  "mentors": [
+    {
+      "name": "Juan Davila",
+      "title": "Lead Mechanical Mentor",
+      "bio": "Mechanical engineer at L3Harris; founding mentor who values FIRST for its authentic engineering challenges.",
+      "photo": "/images/mentors/juan-davila.jpg"
+    },
+    {
+      "name": "DeAnn Davila",
+      "title": "Controls & Inspection",
+      "bio": "Manufacturing engineer and long-time FIRST official who guides students through quality and inspection readiness.",
+      "photo": "/images/mentors/deann-davila.jpg"
+    },
+    {
+      "name": "Joe Bernier",
+      "title": "Electrical Systems",
+      "bio": "Retired engineering leader specializing in electronics, sensors, and controls since 2002.",
+      "photo": "/images/mentors/joe-bernier.jpg"
+    },
+    {
+      "name": "Debbie Bernier",
+      "title": "Software & Alumni Support",
+      "bio": "Retired software engineer who mentors programming and inspires students to pursue STEM degrees.",
+      "photo": "/images/mentors/debbie-bernier.jpg"
+    },
+    {
+      "name": "Okie Baughman",
+      "title": "Reliability & Fabrication",
+      "bio": "Retired reliability engineer whose Navy electronics background keeps our builds practical and tough.",
+      "photo": "/images/mentors/okie-baughman.png"
+    },
+    {
+      "name": "Daniel Kemp",
+      "title": "Operations & Alumni Mentor",
+      "bio": "Former student turned mentor focused on team operations and sustaining Voltage culture.",
+      "photo": "/images/mentors/daniel-kemp.jpg"
+    },
+    {
+      "name": "William Davies",
+      "title": "Hardware & Software Integration",
+      "bio": "Maritime robotics engineer who helps align software, electrical, and mechanical systems.",
+      "photo": "/images/mentors/william-davies.jpg"
+    },
+    {
+      "name": "Janielle Ziegler",
+      "title": "Team Operations",
+      "bio": "Project support specialist and former student mentor focusing on team ops, spirit, and event execution.",
+      "photo": "/images/mentors/janielle-ziegler.jpg"
+    },
+    {
+      "name": "Joe Foster",
+      "title": "Fabrication Mentor",
+      "bio": "Mechanical engineering alum who teaches machining, wood construction, and robust robot design.",
+      "photo": "/images/mentors/placeholder.png"
+    },
+    {
+      "name": "Tom Gabeler",
+      "title": "Engineering Teacher",
+      "bio": "Engineering technology teacher at Melbourne High and longtime FIRST mentor.",
+      "photo": "/images/mentors/tom-gabeler.jpg"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Who can join Team Voltage?",
+      "answer": "Any Brevard County high school student without an FRC team can participate—no experience required."
+    },
+    {
+      "question": "Do I need prior robotics skills?",
+      "answer": "No. We teach CAD, programming, fabrication, business, and media skills with structured onboarding and mentors."
+    },
+    {
+      "question": "How much does it cost?",
+      "answer": "We ask each family to support travel and fundraising, but need-based assistance is available."
+    },
+    {
+      "question": "How do sponsors help?",
+      "answer": "Sponsor funding covers robot parts, event travel, community outreach, and Sparky’s STEAM Camp scholarships."
+    }
+  ]
+}

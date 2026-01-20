@@ -1,0 +1,61 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import PageHeader from '@/components/ui/PageHeader';
+import { getNewsBySlug, getNewsList } from '@/lib/content';
+import { formatDate } from '@/lib/utils';
+
+export async function generateStaticParams() {
+  const news = await getNewsList();
+  return news.map((item) => ({ slug: item.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = await getNewsBySlug(params.slug);
+  if (!post) {
+    return { title: 'News' };
+  }
+  return {
+    title: post.frontmatter.title,
+    description: post.frontmatter.summary
+  };
+}
+
+export default async function NewsDetail({ params }: { params: { slug: string } }) {
+  const post = await getNewsBySlug(params.slug);
+  if (!post) {
+    notFound();
+  }
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-6 px-4 py-12 lg:px-0">
+      <PageHeader
+        title={post.frontmatter.title}
+        description={`${formatDate(post.frontmatter.date)}${post.frontmatter.author ? ` • ${post.frontmatter.author}` : ''}`}
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'News', href: '/news' },
+          { label: post.frontmatter.title }
+        ]}
+      />
+      {post.frontmatter.heroImage && (
+        <Image
+          src={post.frontmatter.heroImage}
+          alt={post.frontmatter.title}
+          width={1200}
+          height={600}
+          className="w-full rounded-3xl object-cover"
+        />
+      )}
+      <article className="space-y-4 text-sm text-white/80">{post.content}</article>
+      {post.frontmatter.ctaLabel && post.frontmatter.ctaUrl && (
+        <a
+          href={post.frontmatter.ctaUrl}
+          className="inline-flex rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary-light"
+        >
+          {post.frontmatter.ctaLabel}
+        </a>
+      )}
+    </div>
+  );
+}

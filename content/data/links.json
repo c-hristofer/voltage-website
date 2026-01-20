@@ -1,0 +1,59 @@
+{
+  "joinForm": "https://forms.gle/2iBqZrgxPvtbfUEZ9",
+  "calendarEmbed": "https://calendar.google.com/calendar/embed?title=Team%20Voltage%20Meeting%20Calendar&height=600&wkst=1&bgcolor=%23FFFFFF&src=voltage386%40gmail.com&color=%23853104&ctz=America%2FNew_York",
+  "gamePage": "https://www.firstinspires.org/robotics/frc/game-and-season",
+  "brandGuidelines": "/documents/brand_standards.pdf",
+  "sponsorPacket": "/documents/sponsorship_packet.pdf",
+  "materialsDrive": "https://drive.google.com/drive/folders/1_Rs7nO2BRQJnm4Lpbk89-FyrBjOXxMMh?usp=sharing",
+  "documents": [
+    {
+      "title": "Safety Quiz",
+      "type": "form",
+      "description": "Annual acknowledgement that each student understands lab and build-space safety expectations.",
+      "url": "https://forms.gle/JNPPezEgRx63z8B17",
+      "category": "Before Your First Meeting"
+    },
+    {
+      "title": "Student Contract",
+      "type": "form",
+      "description": "Outlines expectations for attendance, behavior, and gracious professionalism.",
+      "url": "https://forms.gle/4nHEsL3UBSDfQsiRA",
+      "category": "Before Your First Meeting"
+    },
+    {
+      "title": "Student Information Form",
+      "type": "form",
+      "description": "Collects contact details, guardians, and interest areas.",
+      "url": "https://forms.gle/1jNANpQvMBQrSp1R6",
+      "category": "Before Your First Meeting"
+    },
+    {
+      "title": "New / Interested Student Signup",
+      "type": "form",
+      "description": "Let us know you plan to attend a meeting so we can pair you with mentors.",
+      "url": "https://forms.gle/erdyWoS4CMbuajzs9",
+      "category": "Before Your First Meeting"
+    },
+    {
+      "title": "Meeting Permission Form",
+      "type": "pdf",
+      "description": "Parent/guardian authorization for regular Voltage meetings.",
+      "url": "/documents/2025-2026_voltage_meetings_permission_form.pdf",
+      "category": "PDFs & Downloads"
+    },
+    {
+      "title": "Medical Release Form",
+      "type": "pdf",
+      "description": "Required for any off-campus travel or competitions outside the county.",
+      "url": "/documents/2024_medical-release-form-for-out-of-county-or-over.pdf",
+      "category": "PDFs & Downloads"
+    },
+    {
+      "title": "Student Handbook",
+      "type": "pdf",
+      "description": "Team Voltage policies, safety guidelines, and season expectations.",
+      "url": "/documents/team_handbook.docx.pdf",
+      "category": "PDFs & Downloads"
+    }
+  ]
+}
