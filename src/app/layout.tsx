@@ -1,21 +1,11 @@
 import type { Metadata } from 'next';
-import { Anton, Roboto } from 'next/font/google';
 import './globals.css';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
 import { getSocials, getTeamData } from '@/lib/content';
 
-const anton = Anton({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-anton'
-});
-
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto'
-});
+const antonClass = 'font-[var(--font-anton)]';
+const robotoClass = 'font-[var(--font-roboto)]';
 
 const defaultDescription =
   'Team Voltage 386 is an FRC robotics team building competitive robots, developing student leaders, and delivering measurable community impact.';

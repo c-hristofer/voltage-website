@@ -30,6 +30,8 @@ const legacyYearSlugs: Record<string, string> = {
 };
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  images: { unoptimized: true },
   async redirects() {
     const baseRedirects = [
       { source: '/about.html', destination: '/about', permanent: true },
