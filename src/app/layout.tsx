@@ -11,7 +11,9 @@ const robotoClass = 'font-[var(--font-roboto)]';
 const defaultDescription =
   'Team Voltage 386 is an FRC robotics team building competitive robots, developing student leaders, and delivering measurable community impact.';
 
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://christoferpiedra.github.io/voltage-website';
+const siteOrigin =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.NEXT_PUBLIC_BASE_PATH ? 'https://christoferpiedra.github.io/voltage-website' : 'http://localhost:3000');
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
