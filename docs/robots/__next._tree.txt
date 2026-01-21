@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/d049f6303b0caf3c.css","style"]
-0:{"buildId":"t4_uHDx-oBmr8DnNuIecZ","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"robots","paramType":null,"paramKey":"robots","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/voltage-website/_next/static/chunks/a861014f9b357afd.css","style"]
+0:{"buildId":"FoWicwpuCEDWNH1Ago_zF","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"robots","paramType":null,"paramKey":"robots","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

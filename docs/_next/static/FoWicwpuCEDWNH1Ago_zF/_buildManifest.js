@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/voltage-website//_next/:path+",
+        "destination": "/voltage-website/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [

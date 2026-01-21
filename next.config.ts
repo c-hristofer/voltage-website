@@ -29,8 +29,12 @@ const legacyYearSlugs: Record<string, string> = {
   '2000-co-opertition': '2000'
 };
 
+const repoPath = '/voltage-website';
+
 const nextConfig: NextConfig = {
   output: 'export',
+  basePath: repoPath,
+  assetPrefix: `${repoPath}/`,
   images: { unoptimized: true }
 };
 
