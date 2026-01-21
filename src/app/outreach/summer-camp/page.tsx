@@ -5,12 +5,13 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import CTAButton from '@/components/ui/CTAButton';
 import CampGallery from '@/components/outreach/CampGallery';
 import { getLinks, getTeamData } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   title: 'Sparky’s STEAM Camp'
 };
 
-const campSlides = [
+const campSlideSources = [
   { src: '/images/outreach/camp-gallery/camp-image-0.jpg', alt: 'Campers making binary bracelets' },
   { src: '/images/outreach/camp-gallery/camp-image-1.jpg', alt: 'Students working on robotics challenge' },
   { src: '/images/outreach/camp-gallery/camp-image-2.jpg', alt: 'Mentor helping camper with circuits' },
@@ -31,6 +32,8 @@ const campSlides = [
   { src: '/images/outreach/camp-gallery/camp-image-17.jpg', alt: 'Team Voltage mentors with campers' }
 ];
 
+const campSlides = campSlideSources.map((slide) => ({ ...slide, src: withBasePath(slide.src) }));
+
 export default async function SummerCampPage() {
   const [team, links] = await Promise.all([getTeamData(), getLinks()]);
 
@@ -50,7 +53,7 @@ export default async function SummerCampPage() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
           <div className="mx-auto w-full max-w-sm overflow-hidden rounded-[32px] border border-white/10 bg-surface/80 p-3 shadow-[0_25px_70px_rgba(4,12,28,0.35)] lg:mx-0">
             <Image
-              src="/images/outreach/steam-camp-flyer.png"
+              src={withBasePath('/images/outreach/steam-camp-flyer.png')}
               alt="Team Voltage STEAM summer camp flyer"
               width={480}
               height={624}
@@ -74,7 +77,7 @@ export default async function SummerCampPage() {
               Scroll down to see highlights and photos from the past two years of unforgettable camp experiences!
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <CTAButton href="/images/outreach/steam-camp-flyer.png" label="Download flyer" />
+              <CTAButton href={withBasePath('/images/outreach/steam-camp-flyer.png')} label="Download flyer" />
               <CTAButton href="#what-to-expect" label="Scroll to highlights" variant="outline" />
             </div>
           </div>

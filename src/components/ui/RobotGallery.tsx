@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { RobotSummary } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export default function RobotGallery({ robots }: { robots: RobotSummary[] }) {
   return (
@@ -12,7 +13,7 @@ export default function RobotGallery({ robots }: { robots: RobotSummary[] }) {
         >
           {robot.frontmatter.heroImage && (
             <Image
-              src={robot.frontmatter.heroImage}
+              src={withBasePath(robot.frontmatter.heroImage)}
               alt={robot.frontmatter.name}
               width={640}
               height={360}

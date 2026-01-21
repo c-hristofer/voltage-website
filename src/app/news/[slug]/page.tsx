@@ -4,6 +4,7 @@ import Image from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
 import { getNewsBySlug, getNewsList } from '@/lib/content';
 import { formatDate } from '@/lib/utils';
+import { withBasePath } from '@/lib/paths';
 
 export async function generateStaticParams() {
   const news = await getNewsList();
@@ -40,7 +41,7 @@ export default async function NewsDetail({ params }: { params: { slug: string } 
       />
       {post.frontmatter.heroImage && (
         <Image
-          src={post.frontmatter.heroImage}
+          src={withBasePath(post.frontmatter.heroImage)}
           alt={post.frontmatter.title}
           width={1200}
           height={600}

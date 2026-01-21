@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
 import CTAButton from '@/components/ui/CTAButton';
 import { getRobotByYear } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   title: '2026 Robot'
@@ -28,7 +29,7 @@ export default async function Robot2026Placeholder() {
       {robot?.frontmatter.heroImage && (
         <div className="rounded-3xl border border-white/10 bg-card/70 p-4">
           <Image
-            src={robot.frontmatter.heroImage}
+            src={withBasePath(robot.frontmatter.heroImage)}
             alt={robot.frontmatter.name}
             width={1200}
             height={600}

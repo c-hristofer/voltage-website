@@ -5,6 +5,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import CTAButton from '@/components/ui/CTAButton';
 import { getTeamData } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   title: 'About'
@@ -46,7 +47,7 @@ export default async function AboutPage() {
             <div key={mentor.name} className="space-y-3 rounded-3xl border border-white/10 bg-card/80 p-4">
               <div className="relative flex h-40 w-full items-center justify-center overflow-hidden rounded-2xl bg-white/5">
                 <Image
-                  src={mentor.photo ?? '/images/mentors/placeholder.png'}
+                  src={withBasePath(mentor.photo ?? '/images/mentors/placeholder.png')}
                   alt={`${mentor.name} headshot`}
                   width={320}
                   height={160}

@@ -3,6 +3,7 @@ import './globals.css';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
 import { getSocials, getTeamData } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 const antonClass = 'font-[var(--font-anton)]';
 const robotoClass = 'font-[var(--font-roboto)]';
@@ -10,8 +11,10 @@ const robotoClass = 'font-[var(--font-roboto)]';
 const defaultDescription =
   'Team Voltage 386 is an FRC robotics team building competitive robots, developing student leaders, and delivering measurable community impact.';
 
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://christoferpiedra.github.io/voltage-website';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.teamvoltage.org'),
+  metadataBase: new URL(siteOrigin),
   title: {
     default: 'Team Voltage 386 | Engineering Future Leaders',
     template: 'Team Voltage 386 | %s'
@@ -20,9 +23,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Team Voltage 386',
     description: defaultDescription,
-    url: 'https://www.teamvoltage.org',
+    url: siteOrigin,
     siteName: 'Team Voltage 386',
-    images: ['/images/robots/robot-2025.png'],
+    images: [`${siteOrigin}${withBasePath('/images/robots/robot-2025.png')}`],
     locale: 'en_US',
     type: 'website'
   },
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Team Voltage 386',
     description: defaultDescription,
-    images: ['/images/robots/robot-2025.png']
+    images: [`${siteOrigin}${withBasePath('/images/robots/robot-2025.png')}`]
   }
 };
 

@@ -29,13 +29,24 @@ const legacyYearSlugs: Record<string, string> = {
   '2000-co-opertition': '2000'
 };
 
-const repoPath = '/voltage-website';
+const defaultBasePath = process.env.NODE_ENV === 'production' ? '/voltage-website' : '';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? defaultBasePath;
+const assetPrefix = basePath ? `${basePath}/` : undefined;
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (basePath
+    ? 'https://christoferpiedra.github.io/voltage-website'
+    : 'http://localhost:3000');
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: repoPath,
-  assetPrefix: `${repoPath}/`,
-  images: { unoptimized: true }
+  ...(basePath ? { basePath } : {}),
+  ...(assetPrefix ? { assetPrefix } : {}),
+  images: { unoptimized: true },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath ?? '',
+    NEXT_PUBLIC_SITE_URL: siteUrl
+  }
 };
 
 export default nextConfig;

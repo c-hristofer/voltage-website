@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NewsSummary } from '@/lib/content';
 import { formatDate } from '@/lib/utils';
+import { withBasePath } from '@/lib/paths';
 
 export default function NewsList({ posts, variant = 'grid' }: { posts: NewsSummary[]; variant?: 'grid' | 'list'; }) {
   const layoutClass = variant === 'grid' ? 'grid gap-6 md:grid-cols-2' : 'space-y-4';
@@ -14,7 +15,7 @@ export default function NewsList({ posts, variant = 'grid' }: { posts: NewsSumma
         >
           {post.heroImage && (
             <Image
-              src={post.heroImage}
+              src={withBasePath(post.heroImage)}
               alt={post.title}
               width={800}
               height={400}

@@ -5,6 +5,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import CTAButton from '@/components/ui/CTAButton';
 import MediaGallery from '@/components/ui/MediaGallery';
 import { getLinks, getPressKit } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   title: 'Media'
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 export default async function MediaPage() {
   const [pressKit, links] = await Promise.all([getPressKit(), getLinks()]);
   const photos = [
-    { src: '/images/media/event-1.jpg', alt: 'Students presenting robot' },
-    { src: '/images/media/event-2.jpg', alt: 'Voltage pit crew high five' },
-    { src: '/images/robots/robot-2024.jpg', alt: 'Pulse robot climbing' }
+    { src: withBasePath('/images/media/event-1.jpg'), alt: 'Students presenting robot' },
+    { src: withBasePath('/images/media/event-2.jpg'), alt: 'Voltage pit crew high five' },
+    { src: withBasePath('/images/robots/robot-2024.jpg'), alt: 'Pulse robot climbing' }
   ];
   const videos = [
     { title: 'Team Voltage 386 Playlist', embedUrl: 'https://www.youtube.com/embed/videoseries?list=UUWYPeRD6nzJ6wr-bpSkh-Yg' }
@@ -44,7 +45,7 @@ export default async function MediaPage() {
               <p className="text-xs uppercase tracking-[0.3em] text-white/60">{logo.name}</p>
               <p className="text-sm text-white/60">{logo.usage}</p>
               <Image
-                src={logo.file}
+                src={withBasePath(logo.file)}
                 alt={logo.name}
                 width={320}
                 height={160}

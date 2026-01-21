@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import PageHeader from '@/components/ui/PageHeader';
 import CTAButton from '@/components/ui/CTAButton';
 import { getRobotByYear, getRobots } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export async function generateStaticParams() {
   const robots = await getRobots();
@@ -43,7 +44,7 @@ export default async function RobotDetail({ params }: { params: { year: string }
       />
       {robot.frontmatter.heroImage && (
         <Image
-          src={robot.frontmatter.heroImage}
+          src={withBasePath(robot.frontmatter.heroImage)}
           alt={robot.frontmatter.name}
           width={1200}
           height={600}

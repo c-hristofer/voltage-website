@@ -5,6 +5,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import StatsRow from '@/components/ui/StatsRow';
 import InstagramEmbed from '@/components/social/InstagramEmbed';
 import { getLinks, getMetrics, getSponsors, getTeamData } from '@/lib/content';
+import { withBasePath } from '@/lib/paths';
 
 export default async function HomePage() {
   const [team, metrics, sponsors, links] = await Promise.all([
@@ -112,7 +113,7 @@ export default async function HomePage() {
         </div>
         <div className="glass-card rounded-3xl border border-white/10 bg-card/80 p-4">
           <Image
-            src="/images/robots/robot-2025.png"
+            src={withBasePath('/images/robots/robot-2025.png')}
             alt="Team Voltage robot driving at competition"
             width={900}
             height={700}
@@ -178,7 +179,7 @@ export default async function HomePage() {
           </div>
           <div className="glass-card overflow-hidden rounded-3xl border border-white/10 bg-black/20">
             <Image
-              src="/images/media/event-1.jpg"
+              src={withBasePath('/images/media/event-1.jpg')}
               alt="Voltage students demoing robots at a FIRST event"
               width={900}
               height={600}
