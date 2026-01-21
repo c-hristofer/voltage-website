@@ -17,7 +17,7 @@ export async function loadMDXComponent<T>(filePath: string, schema: z.ZodType<T>
     img: (props: ComponentProps<'img'>) =>
       createElement('img', {
         ...props,
-        src: props.src ? withBasePath(props.src) : props.src
+        src: typeof props.src === 'string' ? withBasePath(props.src) : props.src
       })
   };
   const { content, frontmatter } = await compileMDX({

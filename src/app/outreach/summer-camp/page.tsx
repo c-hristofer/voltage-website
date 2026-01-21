@@ -32,7 +32,10 @@ const campSlideSources = [
   { src: '/images/outreach/camp-gallery/camp-image-17.jpg', alt: 'Team Voltage mentors with campers' }
 ];
 
-const campSlides = campSlideSources.map((slide) => ({ ...slide, src: withBasePath(slide.src) }));
+const campSlides = campSlideSources.map((slide) => ({
+  ...slide,
+  src: withBasePath(slide.src)
+}));
 
 export default async function SummerCampPage() {
   const [team, links] = await Promise.all([getTeamData(), getLinks()]);
