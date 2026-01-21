@@ -15,7 +15,14 @@ export default async function HomePage() {
     getLinks()
   ]);
 
-  const sponsorLogos = sponsors.tiers.flatMap((tier) => tier.sponsors).slice(0, 8);
+  const sponsorLogos = sponsors.tiers
+    .flatMap((tier) =>
+      tier.sponsors.map((sponsor) => ({
+        ...sponsor,
+        logo: sponsor.logo ? withBasePath(sponsor.logo) : undefined
+      }))
+    )
+    .slice(0, 8);
   const locationParts = team.meeting.location.split(',');
   const locationName = locationParts.shift()?.trim() ?? team.meeting.location;
   const scheduleParts = team.meeting.schedule.split(',');
