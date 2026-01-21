@@ -54,13 +54,13 @@ export default async function SummerCampPage() {
       <section id="flyer" className="space-y-6">
         <SectionHeader title="Summer camp flyer" />
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-          <div className="mx-auto w-full max-w-sm overflow-hidden rounded-[32px] border border-white/10 bg-surface/80 p-3 shadow-[0_25px_70px_rgba(4,12,28,0.35)] lg:mx-0">
+          <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[32px] border border-white/10 bg-surface/80 p-3 shadow-[0_25px_70px_rgba(4,12,28,0.35)] lg:mx-0">
             <Image
               src={withBasePath('/images/outreach/steam-camp-flyer.png')}
               alt="Team Voltage STEAM summer camp flyer"
               width={480}
               height={624}
-              className="h-auto w-full"
+              className="h-auto w-full rounded-[26px]"
               priority
             />
           </div>
