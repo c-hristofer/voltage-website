@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { basePath } from '@/lib/paths';
 import { cn } from '@/lib/utils';
 
 type CTAButtonProps = {
@@ -6,6 +7,22 @@ type CTAButtonProps = {
   label: string;
   variant?: 'solid' | 'outline' | 'ghost';
   className?: string;
+};
+
+const normalizeHref = (href: string) => {
+  if (!href) return '#';
+
+  const lower = href.toLowerCase();
+  const isExternal =
+    lower.startsWith('http://') || lower.startsWith('https://') || lower.startsWith('mailto:') || lower.startsWith('tel:');
+  if (isExternal || href.startsWith('#')) return href;
+
+  if (basePath && href.startsWith(`${basePath}/`)) {
+    const trimmed = href.slice(basePath.length);
+    return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  }
+
+  return href;
 };
 
 export default function CTAButton({ href, label, variant = 'solid', className }: CTAButtonProps) {
@@ -20,7 +37,7 @@ export default function CTAButton({ href, label, variant = 'solid', className }:
   } as const;
 
   return (
-    <Link href={href} className={cn(base, variants[variant], className)}>
+    <Link href={normalizeHref(href)} className={cn(base, variants[variant], className)}>
       {label}
     </Link>
   );
