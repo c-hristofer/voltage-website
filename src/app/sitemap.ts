@@ -3,6 +3,9 @@ import { getNewsList, getRobots } from '@/lib/content';
 
 const baseUrl = 'https://www.teamvoltage.org';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [robots, news] = await Promise.all([getRobots(), getNewsList()]);
   const staticRoutes = [

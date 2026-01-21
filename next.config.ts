@@ -31,32 +31,7 @@ const legacyYearSlugs: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   output: 'export',
-  images: { unoptimized: true },
-  async redirects() {
-    const baseRedirects = [
-      { source: '/about.html', destination: '/about', permanent: true },
-      { source: '/sponsors.html', destination: '/sponsors', permanent: true },
-      { source: '/become-a-sponsor.html', destination: '/sponsors#cta', permanent: true },
-      { source: '/calendar.html', destination: '/calendar', permanent: true },
-      { source: '/documents.html', destination: '/documents', permanent: true },
-      { source: '/summer-camp.html', destination: '/outreach/summer-camp', permanent: true },
-      { source: '/summer-camp', destination: '/outreach/summer-camp', permanent: true },
-      { source: '/media', destination: '/outreach/media', permanent: true },
-      { source: '/mentors.html', destination: '/about#mentors', permanent: true },
-      { source: '/awards.html', destination: '/about/awards', permanent: true },
-      { source: '/awards', destination: '/about/awards', permanent: true },
-      { source: '/history.html', destination: '/about/history', permanent: true },
-      { source: '/contact-us.html', destination: '/contact', permanent: true }
-    ];
-
-    const yearRedirects = Object.entries(legacyYearSlugs).map(([slug, year]) => ({
-      source: `/${slug}.html`,
-      destination: `/robots/${year}`,
-      permanent: true
-    }));
-
-    return [...baseRedirects, ...yearRedirects];
-  }
+  images: { unoptimized: true }
 };
 
 export default nextConfig;

@@ -9,8 +9,8 @@ export async function generateStaticParams() {
   return resources.map((resource) => ({ slug: resource.slug }));
 }
 
-export const dynamicParams = true;
-export const revalidate = 0;
+export const dynamicParams = false;
+export const revalidate = false;
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const resource = await getResourceBySlug(params.slug);

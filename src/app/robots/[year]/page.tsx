@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   return robots.map((robot) => ({ year: robot.frontmatter.year.toString() }));
 }
 
-export const dynamicParams = true;
-export const revalidate = 0;
+export const dynamicParams = false;
+export const revalidate = false;
 
 export async function generateMetadata({ params }: { params: { year: string } }): Promise<Metadata> {
   const year = Number(params.year);

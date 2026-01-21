@@ -64,7 +64,7 @@ export default function SiteHeader() {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const handler = () => setIsDesktop(window.innerWidth >= 1024);
+    const handler = () => setIsDesktop(window.innerWidth >= 1280);
     handler();
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
@@ -75,8 +75,8 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-[9999] overflow-visible border-b border-gray-200 bg-gradient-to-r from-white via-[#f3f7ff] to-white shadow-xl backdrop-blur-2xl dark:bg-gradient-to-r dark:from-[rgba(2,6,21,0.8)] dark:via-[rgba(5,12,32,0.7)] dark:to-[rgba(2,6,21,0.8)] dark:border-white/10">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2 lg:py-4 lg:px-6">
-        <Link href="/" className="flex items-center gap-4" aria-label="Team Voltage 386 home">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2 lg:py-4 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-4" aria-label="Team Voltage 386 home">
           <Image
             src="/images/brand/team-voltage-logo.png"
             alt="Team Voltage 386 logo"
@@ -85,7 +85,7 @@ export default function SiteHeader() {
             className="h-16 w-auto"
             priority
           />
-          <div className="hidden flex-col text-sm font-medium uppercase tracking-wide sm:flex">
+          <div className="hidden min-w-[9rem] flex-col text-sm font-medium uppercase tracking-wide sm:flex">
             <span className="text-white">Team Voltage</span>
             <span className="text-white/60">FRC 386</span>
           </div>
@@ -100,7 +100,7 @@ export default function SiteHeader() {
         </button>
         <nav
           className={cn(
-            'absolute left-0 right-0 top-full z-[10000] overflow-visible px-4 pb-6 pt-4 text-foreground transition-all duration-200 lg:static lg:flex lg:flex-1 lg:items-center lg:justify-center lg:px-0 lg:pb-0 lg:pt-0',
+            'absolute left-0 right-0 top-full z-[10000] overflow-visible px-4 pb-6 pt-4 text-foreground transition-all duration-200 lg:static lg:z-auto lg:ml-auto lg:flex lg:flex-1 lg:min-w-0 lg:max-w-[calc(100%-14rem)] lg:items-center lg:justify-end lg:px-0 lg:pb-0 lg:pt-0',
             !isDesktop &&
               'rounded-3xl border border-white/40 bg-gradient-to-b from-white/95 to-white/85 shadow-[0_30px_70px_rgba(5,12,32,0.35)] backdrop-blur-[28px] dark:border-white/15 dark:bg-gradient-to-b dark:from-[rgba(8,16,38,0.92)] dark:via-[rgba(5,10,26,0.9)] dark:to-[rgba(3,7,18,0.9)]',
             isDesktop &&
@@ -108,7 +108,7 @@ export default function SiteHeader() {
             open ? 'visible translate-y-1 opacity-100' : 'invisible -translate-y-6 opacity-0 lg:visible lg:translate-y-0 lg:opacity-100'
           )}
         >
-          <ul className="grid max-h-[70vh] gap-4 overflow-y-auto text-sm font-semibold uppercase tracking-wide lg:max-h-none lg:flex lg:flex-wrap lg:items-center lg:gap-4 lg:overflow-visible lg:rounded-full lg:border lg:border-white/50 lg:bg-white/85 lg:px-4 lg:py-1 lg:shadow-[0_10px_30px_rgba(2,6,21,0.25)] dark:text-[#eaf0ff] dark:lg:border-white/30 dark:lg:bg-[rgba(12,18,44,0.78)] dark:lg:shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+          <ul className="grid max-h-[70vh] gap-4 overflow-y-auto text-xs font-semibold uppercase tracking-wide lg:max-h-none lg:flex lg:w-full lg:flex-nowrap lg:items-center lg:justify-between lg:gap-1 lg:overflow-visible lg:rounded-full lg:border lg:border-white/50 lg:bg-white/85 lg:px-3 lg:py-1 lg:text-[clamp(0.44rem,0.36rem+0.24vw,0.68rem)] lg:tracking-[clamp(0.14em,0.13em+0.02vw,0.22em)] lg:text-[#021642] lg:shadow-[0_10px_30px_rgba(2,6,21,0.25)] dark:text-[#eaf0ff] dark:lg:border-white/30 dark:lg:bg-[rgba(12,18,44,0.78)] dark:lg:text-[clamp(0.48rem,0.44rem+0.18vw,0.68rem)] dark:lg:shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:whitespace-nowrap">
             {NAV_LINKS.map((item) => {
               const isOpen = openDropdown === item.label;
               const isMobileDropdownOpen = !isDesktop && isOpen;
@@ -145,7 +145,7 @@ export default function SiteHeader() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'inline-flex items-center gap-1 rounded-full px-4 py-2 text-[#071a4f] transition hover:text-[#021039] dark:text-[#f7fbff] dark:hover:text-white',
+                    'inline-flex items-center gap-1 rounded-full px-2 py-2 text-[#071a4f] transition hover:text-[#021039] dark:text-[#f7fbff] dark:hover:text-white lg:px-3',
                     isActive(item.href) &&
                       'bg-white/80 text-[#021039] shadow-[0_8px_20px_rgba(0,0,0,0.15)] dark:bg-white/25 dark:text-[#050c2a] dark:shadow-[0_8px_20px_rgba(0,0,0,0.4)]'
                   )}

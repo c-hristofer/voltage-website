@@ -48,7 +48,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${roboto.variable} bg-background text-white`}>
+      <body className={`${antonClass} ${robotoClass} bg-background text-white`}>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
