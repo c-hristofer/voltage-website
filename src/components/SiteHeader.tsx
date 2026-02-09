@@ -83,7 +83,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-[9999] overflow-visible border-b border-gray-200 bg-gradient-to-r from-white via-[#f3f7ff] to-white shadow-xl backdrop-blur-2xl dark:bg-gradient-to-r dark:from-[rgba(2,6,21,0.8)] dark:via-[rgba(5,12,32,0.7)] dark:to-[rgba(2,6,21,0.8)] dark:border-white/10">
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2 lg:pr-24 lg:py-4 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2 lg:py-4 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-4" aria-label="Team Voltage 386 home">
           <Image
             src={withBasePath('/images/brand/team-voltage-logo.png')}
@@ -109,12 +109,9 @@ export default function SiteHeader() {
             Menu
           </button>
         </div>
-        <div className="absolute right-8 hidden lg:flex">
-          <ThemeToggle />
-        </div>
         <nav
           className={cn(
-            'absolute left-0 right-0 top-full z-[10000] overflow-visible px-4 pb-6 pt-4 text-foreground transition-all duration-200 lg:static lg:z-auto lg:ml-auto lg:flex lg:flex-1 lg:min-w-0 lg:items-center lg:justify-end lg:px-0 lg:pb-0 lg:pt-0',
+            'absolute left-0 right-0 top-full z-[10000] overflow-visible px-4 pb-6 pt-4 text-foreground transition-all duration-200 lg:static lg:z-auto lg:ml-auto lg:flex lg:items-center lg:gap-5 lg:px-0 lg:pb-0 lg:pt-0',
             !isDesktop &&
               'rounded-3xl border border-white/40 bg-gradient-to-b from-white/95 to-white/85 shadow-[0_30px_70px_rgba(5,12,32,0.35)] backdrop-blur-[28px] dark:border-white/15 dark:bg-gradient-to-b dark:from-[rgba(8,16,38,0.92)] dark:via-[rgba(5,10,26,0.9)] dark:to-[rgba(3,7,18,0.9)]',
             isDesktop &&
@@ -122,6 +119,9 @@ export default function SiteHeader() {
             open ? 'visible translate-y-1 opacity-100' : 'invisible -translate-y-6 opacity-0 lg:visible lg:translate-y-0 lg:opacity-100'
           )}
         >
+          <div className="hidden lg:flex lg:shrink-0">
+            <ThemeToggle />
+          </div>
           <ul className="grid max-h-[70vh] gap-4 overflow-y-auto text-xs font-semibold uppercase tracking-wide lg:max-h-none lg:flex lg:w-auto lg:flex-nowrap lg:items-center lg:justify-end lg:gap-1 lg:overflow-visible lg:rounded-full lg:border lg:border-white/50 lg:bg-white/85 lg:px-3 lg:py-1 lg:text-[clamp(0.42rem,0.34rem+0.22vw,0.64rem)] lg:tracking-[0.18em] lg:text-[#021642] lg:shadow-[0_10px_30px_rgba(2,6,21,0.25)] dark:text-[#eaf0ff] dark:lg:border-white/30 dark:lg:bg-[rgba(12,18,44,0.78)] dark:lg:text-[clamp(0.46rem,0.42rem+0.16vw,0.64rem)] dark:lg:shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:whitespace-nowrap">
             {NAV_LINKS.map((item) => {
               const isOpen = openDropdown === item.label;
