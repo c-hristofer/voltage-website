@@ -1,6 +1,10 @@
+// Shared UI component.
+
 import { MetricsData } from '@/lib/schemas';
 
+// Render headline team metrics in a compact grid.
 export default function StatsRow({ metrics }: { metrics: MetricsData }) {
+  // Order and labels for the stat cards.
   const items = [
     { label: 'Years Competing', value: metrics.yearsActive },
     { label: 'Awards Earned', value: metrics.awards },

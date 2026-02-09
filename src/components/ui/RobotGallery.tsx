@@ -1,8 +1,11 @@
+// Shared UI component.
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { RobotSummary } from '@/lib/content';
 import { withBasePath } from '@/lib/paths';
 
+// Card grid for robot season summaries.
 export default function RobotGallery({ robots }: { robots: RobotSummary[] }) {
   return (
     <div className="grid gap-6 md:grid-cols-2">

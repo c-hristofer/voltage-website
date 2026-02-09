@@ -1,5 +1,7 @@
 'use client';
 
+// Shared UI component.
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -7,6 +9,7 @@ import { cn } from '@/lib/utils';
 type Photo = { src: string; alt: string };
 type Video = { title: string; embedUrl: string };
 
+// Photo grid, video embeds, and lightbox used on the media page.
 export default function MediaGallery({ photos, videos }: { photos: Photo[]; videos: Video[] }) {
   const [active, setActive] = useState<Photo | null>(null);
 

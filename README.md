@@ -1,77 +1,99 @@
-# Team Voltage 386 – Next.js Experience
+# Team Voltage Website (Static Next.js + GitHub Pages)
 
-High-voltage marketing site for FRC Team 386. Built with the Next.js App Router, fully typed content pipelines, and a glassmorphic design system inspired by the team’s Haas-sponsored REBUILT season.
+This project builds to a fully static website and deploys to GitHub Pages.
 
-## ✨ Highlights
-- **MDX + JSON content platform** – news, robots, outreach, resources, awards, and sponsor tiers all live in `/content`, so non-developers can edit without touching React.
-- **Section-driven UX** – hero callouts, Instagram embeds, sponsor wall, mission statement, and FIRST primer were designed to mirror the updated brand book.
-- **Dark-mode polished** – every CTA, card, and resource surface was tuned for legibility in light/dark themes.
-- **Data-safe loaders** – `src/lib/content.ts` uses Zod to validate every MDX/JSON document before rendering.
+## How hosting works
 
-## 🧱 Tech Stack
-- Next.js 16 (App Router) + TypeScript
-- Tailwind CSS with custom font stack + CSS variables
-- MDX (contentlayer-style filesystem routing)
-- Zod for schema validation
-- Vitest for content utility coverage
+- The site is built with Next.js static export (`output: 'export'` in `next.config.ts`).
+- GitHub Actions builds the site and publishes the `out/` folder to GitHub Pages.
+- Deploy workflow file: `.github/workflows/deploy-pages.yml`.
 
-## 🚀 Getting Started
+## One-time setup (GitHub)
+
+Do this once in the repository settings:
+
+1. Open **Settings -> Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Make sure your default branch is `main`.
+
+After that, every push to `main` deploys automatically.
+
+## Student update workflow
+
+### 1) Get the project running locally
+
 ```bash
 npm install
 npm run dev
-# open http://localhost:3000
 ```
 
-### Quality Scripts
-| Command | Description |
-| --- | --- |
-| `npm run lint` | ESLint with Next.js config |
-| `npm run test` | Vitest suite for loaders/helpers |
-| `npm run build` | Production build (Turbopack) |
+Open `http://localhost:3000`.
 
-## 📁 Content Architecture
-All structured data lives in `/content`.
+### 2) Make content updates
 
-| Area | Files | Notes |
-| --- | --- | --- |
-| Global data | `/content/data/*.json` | `team.json`, `links.json`, `sponsors.json`, `metrics.json`, `awards.json`, `presskit.json`, `socials.json` |
-| News | `/content/news/*.mdx` | Frontmatter: `title`, `date`, `summary`, optional hero + CTA |
-| Robots | `/content/robots/<year>.mdx` | Defines each robot’s story, highlights, specs |
-| Outreach | `/content/outreach/*.mdx` | Cards for events, FLL mentoring, Sparky’s STEAM Camp |
-| Resources | `/content/resources/*.mdx` | Handbooks, scouting kits, CAD/code repos |
-| History | `/content/about/history/**/*.mdx` | Year-by-year archive rendered on `/about/history` |
+Most edits are in `content/`:
 
-Update JSON/MDX and rerun `npm run dev`—the site hot-reloads with the new copy and media.
+- Team/contact/links data: `content/data/*.json`
+- News posts: `content/news/*.mdx`
+- Robot pages: `content/robots/*.mdx`
+- Outreach entries: `content/outreach/*.mdx`
+- Resource entries: `content/resources/*.mdx`
+- History content: `content/about/history/**/*`
 
-## 🔧 Key Directories
-- `src/app/page.tsx` – homepage hero, Instagram block, mission/FIRST sections, sponsor wall.
-- `src/app/[route]` – About, Robots, Outreach, Resources, Sponsors, Calendar, etc.
-- `src/components/` – CTA buttons, cards, sliders, navigation, Instagram embed, sponsor wall.
-- `src/lib/content.ts` – shared loaders that parse MDX/JSON and enforce schemas.
-- `public/images/` – robots, mentors, outreach media, sponsor logos.
+### 3) If you need to edit page layout/code
 
-## 🧩 Customization Cheatsheet
-- **Meeting info, mission statement, leadership, FAQ** – edit `content/data/team.json`.
-- **Forms & documents** – update URLs in `content/data/links.json`; `/resources` and join/pre-season pages update automatically.
-- **Sponsor tiers & logos** – edit `content/data/sponsors.json` and drop logos in `public/images/sponsors`.
-- **Awards timeline** – `content/data/awards.json` drives `/about/awards`.
-- **Instagram embed** – markup/script lives in `src/components/social/InstagramEmbed.tsx`.
+- Route matching entrypoint: `src/app/[...slug]/page.tsx`
+- Individual route modules: `src/routes/*.tsx`
+- Shared UI components: `src/components/` and `src/components/ui/`
+- Global styles/theme: `src/app/globals.css`
 
-## ☁️ Deployment
-1. Push to GitHub.
-2. Connect repo to Vercel (or preferred host).
-3. Ensure Node 20+ runtime.
-4. Build command: `npm run build`.
-5. No environment variables required out of the box.
+### 4) Check quality before pushing
 
-## 🤝 Contributing
-1. Fork & branch.
-2. `npm run lint && npm run test` before opening a PR.
-3. Include screenshots/gifs when tweaking UI.
+```bash
+npm run list
+npm run test
+npm run build
+```
 
-## 📬 Contact
-- Email: `teamvoltage386@gmail.com`
-- Instagram: [`@teamvoltage386`](https://www.instagram.com/teamvoltage386/)
-- Sponsor inquiries: `/sponsors` page or `content/data/presskit.json` links.
+`npm run build` should succeed and generate static files in `out/`.
 
-Bring the energy. 💥
+### 5) Ship the update
+
+```bash
+git add .
+git commit -m "Update: <what changed>"
+git push
+```
+
+Preferred flow: open a Pull Request, get review, then merge to `main`.
+
+## Deploy status
+
+After merge/push to `main`:
+
+1. Open **Actions** tab and confirm the deploy workflow passed.
+2. Open **Settings -> Pages** to see the published site URL.
+
+## Important static-site rules
+
+Because this is GitHub Pages:
+
+- Do not add server-only features (custom API routes, server DB calls, dynamic runtime endpoints).
+- Keep pages build-time/static-friendly.
+- Use local/static assets or public links for content/media.
+
+## Troubleshooting
+
+### Deploy succeeded but page paths are broken
+
+- Confirm repo name/path did not change.
+- The workflow sets `NEXT_PUBLIC_BASE_PATH` from Pages automatically.
+
+### `npm run dev` says port is already in use
+
+- Stop old dev server (`Ctrl+C`) and rerun.
+
+### Build fails
+
+- Run `npm install` again.
+- Re-run `npm run list` and `npm run test` to find the specific issue.

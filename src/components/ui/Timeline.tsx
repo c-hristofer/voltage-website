@@ -1,3 +1,5 @@
+// Shared UI component.
+
 import { historyItemSchema } from '@/lib/schemas';
 import type { z } from 'zod';
 
@@ -5,6 +7,7 @@ const HistoryItem = historyItemSchema;
 
 type HistoryItem = z.infer<typeof HistoryItem>;
 
+// Vertical timeline used on the history page.
 export default function Timeline({ items }: { items: HistoryItem[] }) {
   return (
     <ol className="relative space-y-6 border-l border-white/20 pl-6">

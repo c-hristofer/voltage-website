@@ -1,12 +1,16 @@
+// App-level Next.js configuration.
+
 import Image from 'next/image';
 import Link from 'next/link';
 import CTAButton from '@/components/ui/CTAButton';
 import SectionHeader from '@/components/ui/SectionHeader';
 import StatsRow from '@/components/ui/StatsRow';
-import InstagramEmbed from '@/components/social/InstagramEmbed';
+import InstagramEmbed from '@/components/InstagramEmbed';
+import ExternalLink from '@/components/ui/ExternalLink';
 import { getLinks, getMetrics, getSponsors, getTeamData } from '@/lib/content';
 import { withBasePath } from '@/lib/paths';
 
+// Renders the homepage sections using team and sponsor content.
 export default async function HomePage() {
   const [team, metrics, sponsors, links] = await Promise.all([
     getTeamData(),
@@ -49,9 +53,9 @@ export default async function HomePage() {
                 signage to the shop entrance.
               </p>
               {team.meeting.mapUrl && (
-                <Link href={team.meeting.mapUrl} target="_blank" className="mt-3 inline-block text-sm font-semibold">
+                <ExternalLink href={team.meeting.mapUrl} className="mt-3 inline-block text-sm font-semibold">
                   Open campus map →
-                </Link>
+                </ExternalLink>
               )}
             </div>
             <div className="rounded-2xl border border-white/20 bg-white/10 p-5">

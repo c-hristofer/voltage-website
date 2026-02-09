@@ -1,6 +1,9 @@
+// Shared UI component.
+
 import Link from 'next/link';
 import { basePath } from '@/lib/paths';
 import { cn } from '@/lib/utils';
+import { sanitizeHref } from '@/lib/security';
 
 type CTAButtonProps = {
   href: string;
@@ -9,23 +12,27 @@ type CTAButtonProps = {
   className?: string;
 };
 
+// Normalizes href so downstream code sees a consistent format.
 const normalizeHref = (href: string) => {
-  if (!href) return '#';
+  const safeHref = sanitizeHref(href);
+  if (safeHref === '#') return safeHref;
 
-  const lower = href.toLowerCase();
+  const lower = safeHref.toLowerCase();
   const isExternal =
     lower.startsWith('http://') || lower.startsWith('https://') || lower.startsWith('mailto:') || lower.startsWith('tel:');
-  if (isExternal || href.startsWith('#')) return href;
+  if (isExternal || safeHref.startsWith('#')) return safeHref;
 
-  if (basePath && href.startsWith(`${basePath}/`)) {
-    const trimmed = href.slice(basePath.length);
+  if (basePath && safeHref.startsWith(`${basePath}/`)) {
+    const trimmed = safeHref.slice(basePath.length);
     return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
   }
 
-  return href;
+  return safeHref;
 };
 
+// Call-to-action link with shared button styles.
 export default function CTAButton({ href, label, variant = 'solid', className }: CTAButtonProps) {
+  // Base styles shared by all CTA variants.
   const base =
     'cta-button inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] transition focus-visible:outline-none shadow-[0_8px_24px_rgba(0,0,0,0.45)] will-change-transform';
   const variants = {

@@ -1,5 +1,7 @@
-import Link from 'next/link';
+// Shared UI component.
+
 import { cn } from '@/lib/utils';
+import ExternalLink from '@/components/ui/ExternalLink';
 
 type ResourceDownloadProps = {
   title: string;
@@ -11,6 +13,7 @@ type ResourceDownloadProps = {
   showDownload?: boolean;
 };
 
+// Render one resource card with view/download actions.
 export default function ResourceDownload({
   title,
   description,
@@ -20,6 +23,7 @@ export default function ResourceDownload({
   className,
   showDownload = true
 }: ResourceDownloadProps) {
+  // Base styles shared by both action buttons.
   const baseButton =
     'inline-flex min-w-[120px] items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] transition shadow-[0_8px_20px_rgba(5,12,32,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70';
   const viewButton = cn(
@@ -47,14 +51,14 @@ export default function ResourceDownload({
       <p className="text-sm text-[#32405f] dark:text-white/80">{description}</p>
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
         {viewUrl && (
-          <Link href={viewUrl} target="_blank" className={viewButton}>
+          <ExternalLink href={viewUrl} className={viewButton}>
             View
-          </Link>
+          </ExternalLink>
         )}
         {showDownload && (
-          <Link href={downloadUrl} target="_blank" className={downloadButton}>
+          <ExternalLink href={downloadUrl} className={downloadButton}>
             Download
-          </Link>
+          </ExternalLink>
         )}
       </div>
     </div>

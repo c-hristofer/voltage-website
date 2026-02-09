@@ -1,3 +1,5 @@
+// Shared UI component.
+
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -9,6 +11,7 @@ type SectionHeaderProps = {
   className?: string;
 };
 
+// Standard heading block used at the top of each section.
 export default function SectionHeader({ eyebrow, title, description, align = 'left', className }: SectionHeaderProps) {
   return (
     <div

@@ -1,3 +1,5 @@
+// Unit tests for shared utility helpers.
+
 import { describe, expect, it } from 'vitest';
 import { formatDate, slugify } from './utils';
 

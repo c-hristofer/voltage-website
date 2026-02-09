@@ -1,3 +1,5 @@
+// Shared UI component.
+
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -8,6 +10,7 @@ type CardProps = {
   className?: string;
 };
 
+// Generic card shell used by content sections.
 export default function Card({ title, description, children, className }: CardProps) {
   return (
     <div

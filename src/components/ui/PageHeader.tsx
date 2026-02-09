@@ -1,3 +1,5 @@
+// Shared UI component.
+
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -10,6 +12,7 @@ type PageHeaderProps = {
   align?: 'left' | 'center';
 };
 
+// Page title block with optional breadcrumbs and description text.
 export default function PageHeader({ title, description, breadcrumbs = [], align = 'left' }: PageHeaderProps) {
   return (
     <div className={cn('space-y-3', align === 'center' && 'text-center')}>

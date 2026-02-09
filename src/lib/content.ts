@@ -1,4 +1,5 @@
-import fs from 'node:fs/promises';
+// Shared helpers used across routes and components.
+
 import path from 'node:path';
 import matter from 'gray-matter';
 import { cache, createElement } from 'react';
@@ -14,51 +15,86 @@ import {
   pressKitSchema,
   resourceFrontmatterSchema,
   robotFrontmatterSchema,
+  socialsSchema,
   sponsorsSchema,
   teamSchema
 } from './schemas';
 import type {
+  HistoryFrontmatter,
   NewsFrontmatter,
   OutreachFrontmatter,
   ResourceFrontmatter,
   RobotFrontmatter,
-  HistoryFrontmatter
+  SocialsData
 } from './schemas';
 import { loadMDXComponent, readFrontmatter, resolveContentPath } from './mdx';
+import { readDirectorySafe, readFileUtf8Safe } from './fs-safe';
 import { slugify } from './utils';
 
 const contentRoot = path.join(process.cwd(), 'content');
+const CONTENT_DATA_DIR = 'data';
 
-async function readJson<T>(file: string, schema: { parse: (input: unknown) => T }) {
-  const fullPath = path.join(contentRoot, file);
-  const raw = await fs.readFile(fullPath, 'utf8');
+type Parser<T> = { parse: (input: unknown) => T };
+
+// Read and validate one JSON file from content/data.
+async function readJson<T>(file: string, schema: Parser<T>) {
+  const fullPath = path.join(contentRoot, CONTENT_DATA_DIR, file);
+  const raw = await readFileUtf8Safe(fullPath);
   return schema.parse(JSON.parse(raw));
 }
 
-export const getTeamData = cache(async () => readJson('data/team.json', teamSchema));
-export const getMetrics = cache(async () => readJson('data/metrics.json', metricsSchema));
-export const getSponsors = cache(async () => readJson('data/sponsors.json', sponsorsSchema));
-export const getLinks = cache(async () => readJson('data/links.json', linksSchema));
-export const getAwards = cache(async () => readJson('data/awards.json', awardsSchema));
-export const getPressKit = cache(async () => readJson('data/presskit.json', pressKitSchema));
-
-export async function getSocials() {
-  const fullPath = path.join(contentRoot, 'data/socials.json');
-  const raw = await fs.readFile(fullPath, 'utf8');
-  return JSON.parse(raw) as { instagram?: string; youtube?: string };
+// Read every MDX filename in a content folder.
+async function listMdxFiles(directory: string) {
+  const files = await readDirectorySafe(directory);
+  return files.filter((file) => file.endsWith('.mdx'));
 }
 
+// Read an MDX file and split it into validated frontmatter plus body markdown.
+async function readMdxWithMatter<T>(filePath: string, schema: Parser<T>) {
+  const source = await readFileUtf8Safe(filePath);
+  const parsed = matter(source);
+  return {
+    frontmatter: schema.parse(parsed.data),
+    body: parsed.content.trim()
+  };
+}
+
+// Turn an MDX filename into a route slug.
 function getSlug(fileName: string) {
   return slugify(fileName.replace(/\.mdx$/, ''));
 }
 
+// Find the MDX file whose slug matches the route.
+async function findMdxBySlug(directory: string, slug: string) {
+  const files = await listMdxFiles(directory);
+  return files.find((file) => getSlug(file) === slug) ?? null;
+}
+
+export const getTeamData = cache(async () => readJson('team.json', teamSchema));
+export const getMetrics = cache(async () => readJson('metrics.json', metricsSchema));
+export const getSponsors = cache(async () => readJson('sponsors.json', sponsorsSchema));
+// Cache global link data so repeated reads stay fast.
+export const getLinks = cache(async () => readJson('links.json', linksSchema));
+export const getAwards = cache(async () => readJson('awards.json', awardsSchema));
+export const getPressKit = cache(async () => readJson('presskit.json', pressKitSchema));
+export const getSocials = cache(async (): Promise<SocialsData> =>
+  readJson('socials.json', socialsSchema)
+);
+
 export type NewsSummary = NewsFrontmatter & { slug: string };
+
+// Route slug list used for statically generating news pages.
+export const getNewsSlugs = cache(async (): Promise<string[]> => {
+  const dir = resolveContentPath('news');
+  const files = await listMdxFiles(dir);
+  return files.map((file) => getSlug(file));
+});
 
 export const getNewsList = cache(async (): Promise<NewsSummary[]> => {
   const dir = resolveContentPath('news');
-  const files = await fs.readdir(dir);
+  const files = await listMdxFiles(dir);
   const items = await Promise.all(
-    files.filter((file) => file.endsWith('.mdx')).map(async (file) => {
+    files.map(async (file) => {
       const frontmatter = await readFrontmatter(
         path.join(dir, file),
         newsFrontmatterSchema
@@ -74,10 +110,26 @@ export const getNewsList = cache(async (): Promise<NewsSummary[]> => {
   );
 });
 
+// Get parsed news frontmatter for one slug.
+export async function getNewsFrontmatterBySlug(slug: string) {
+  const dir = resolveContentPath('news');
+  const match = await findMdxBySlug(dir, slug);
+  if (!match) return null;
+
+  const frontmatter = await readFrontmatter(
+    path.join(dir, match),
+    newsFrontmatterSchema
+  );
+  return {
+    ...frontmatter,
+    slug
+  } satisfies NewsSummary;
+}
+
+// Get rendered news content and frontmatter for one slug.
 export async function getNewsBySlug(slug: string) {
   const dir = resolveContentPath('news');
-  const files = await fs.readdir(dir);
-  const match = files.find((file) => getSlug(file) === slug);
+  const match = await findMdxBySlug(dir, slug);
   if (!match) {
     return null;
   }
@@ -94,11 +146,26 @@ export type RobotSummary = {
   content: ReactNode;
 };
 
+export const getRobotYears = cache(async (): Promise<number[]> => {
+  const dir = resolveContentPath('robots');
+  const files = await listMdxFiles(dir);
+  const years = await Promise.all(
+    files.map(async (file) => {
+      const frontmatter = await readFrontmatter(
+        path.join(dir, file),
+        robotFrontmatterSchema
+      );
+      return frontmatter.year;
+    })
+  );
+  return years;
+});
+
 export const getRobots = cache(async () => {
   const dir = resolveContentPath('robots');
-  const files = await fs.readdir(dir);
+  const files = await listMdxFiles(dir);
   const robots = await Promise.all(
-    files.filter((file) => file.endsWith('.mdx')).map(async (file) => {
+    files.map(async (file) => {
       const { content, frontmatter } = await loadMDXComponent(
         path.join(dir, file),
         robotFrontmatterSchema
@@ -113,61 +180,115 @@ export const getRobots = cache(async () => {
   return robots.sort((a, b) => b.frontmatter.year - a.frontmatter.year);
 });
 
+// Get robot frontmatter for a specific season year.
+export async function getRobotFrontmatterByYear(year: number) {
+  const dir = resolveContentPath('robots');
+  const files = await listMdxFiles(dir);
+
+  for (const file of files) {
+    const frontmatter = await readFrontmatter(
+      path.join(dir, file),
+      robotFrontmatterSchema
+    );
+    if (frontmatter.year === year) {
+      return {
+        slug: getSlug(file),
+        frontmatter
+      };
+    }
+  }
+
+  return null;
+}
+
+// Get rendered robot content for a specific season year.
 export async function getRobotByYear(year: number) {
-  const robots = await getRobots();
-  return robots.find((robot) => robot.frontmatter.year === year) ?? null;
+  const dir = resolveContentPath('robots');
+  const files = await listMdxFiles(dir);
+
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const frontmatter = await readFrontmatter(filePath, robotFrontmatterSchema);
+    if (frontmatter.year !== year) {
+      continue;
+    }
+
+    const { content, frontmatter: fullFrontmatter } = await loadMDXComponent(
+      filePath,
+      robotFrontmatterSchema
+    );
+    return {
+      slug: getSlug(file),
+      frontmatter: fullFrontmatter as RobotFrontmatter,
+      content
+    };
+  }
+
+  return null;
 }
 
 export type OutreachSummary = OutreachFrontmatter & { slug: string; body: string };
 
 export const getOutreachEntries = cache(async (): Promise<OutreachSummary[]> => {
   const dir = resolveContentPath('outreach');
-  const files = await fs.readdir(dir);
+  const files = await listMdxFiles(dir);
   const entries = await Promise.all(
-    files.filter((file) => file.endsWith('.mdx')).map(async (file) => {
+    files.map(async (file) => {
       const fullPath = path.join(dir, file);
-      const source = await fs.readFile(fullPath, 'utf8');
-      const parsed = matter(source);
-      const data = outreachFrontmatterSchema.parse(parsed.data);
+      const { frontmatter, body } = await readMdxWithMatter(
+        fullPath,
+        outreachFrontmatterSchema
+      );
       return {
-        ...data,
+        ...frontmatter,
         slug: getSlug(file),
-        body: parsed.content.trim()
+        body
       } satisfies OutreachSummary;
     })
   );
   return entries;
 });
 
-export async function getOutreachEntry(slug: string) {
-  const dir = resolveContentPath('outreach');
-  const files = await fs.readdir(dir);
-  const match = files.find((file) => getSlug(file) === slug);
-  if (!match) return null;
-  return loadMDXComponent(path.join(dir, match), outreachFrontmatterSchema);
-}
-
 export type ResourceSummary = ResourceFrontmatter & { slug: string; body: string };
+
+// Route slug list used for statically generating resource pages.
+export const getResourceSlugs = cache(async (): Promise<string[]> => {
+  const dir = resolveContentPath('resources');
+  const files = await listMdxFiles(dir);
+  // Pull slugs from frontmatter when present so route names stay editor-friendly.
+  const slugs = await Promise.all(
+    files.map(async (file) => {
+      const frontmatter = await readFrontmatter(
+        path.join(dir, file),
+        resourceFrontmatterSchema
+      );
+      return frontmatter.slug || getSlug(file);
+    })
+  );
+  return slugs;
+});
 
 export const getResources = cache(async (): Promise<ResourceSummary[]> => {
   const dir = resolveContentPath('resources');
-  const files = await fs.readdir(dir);
+  const files = await listMdxFiles(dir);
   const items = await Promise.all(
-    files.filter((file) => file.endsWith('.mdx')).map(async (file) => {
+    files.map(async (file) => {
       const fullPath = path.join(dir, file);
-      const source = await fs.readFile(fullPath, 'utf8');
-      const parsed = matter(source);
-      const data = resourceFrontmatterSchema.parse(parsed.data);
+      const { frontmatter, body } = await readMdxWithMatter(
+        fullPath,
+        resourceFrontmatterSchema
+      );
       return {
-        ...data,
-        slug: data.slug || getSlug(file),
-        body: parsed.content.trim()
+        ...frontmatter,
+        slug: frontmatter.slug || getSlug(file),
+        body
       } as ResourceSummary;
     })
   );
   return items;
 });
 
+// Get one resource entry by slug.
 export async function getResourceBySlug(slug: string) {
   const resources = await getResources();
   return resources.find((item) => item.slug === slug) ?? null;
@@ -195,7 +316,9 @@ export type HistoryTimeline = {
   missingSources: string[];
 };
 
+// Build the full history timeline payload for the history route.
 export async function getHistoryTimeline(): Promise<HistoryTimeline> {
+  // If history content is not generated yet, keep the page renderable with a safe fallback.
   const introPath = resolveContentPath('about/history/index.mdx');
   let introComponent: ReactNode = createElement(
     'div',
@@ -231,20 +354,24 @@ export async function getHistoryTimeline(): Promise<HistoryTimeline> {
   const indexPath = resolveContentPath('about/history/years/index.json');
   let indexData: HistoryIndexPayload = { years: [], missing: [] };
   try {
-    const raw = await fs.readFile(indexPath, 'utf8');
+    const raw = await readFileUtf8Safe(indexPath);
     indexData = JSON.parse(raw) as HistoryIndexPayload;
   } catch {
     indexData.missing = [...(indexData.missing ?? []), path.relative(process.cwd(), indexPath)];
   }
 
   const years: HistoryYearEntry[] = [];
+  // Extract a sortable year from metadata when content has mixed naming patterns.
   const resolveChronoYear = (meta: { year: number; title: string; slug: string }) => {
+    // Prefer the year in the slug because generated filenames are usually year-based.
     const slugMatch = meta.slug.match(/\d{4}/);
     if (slugMatch) return Number(slugMatch[0]);
+    // Fall back to the title if the slug does not include a year.
     const titleMatch = meta.title.match(/\d{4}/);
     if (titleMatch) return Number(titleMatch[0]);
     return meta.year ?? 0;
   };
+  // Sort newest to oldest for the timeline page.
   const sortedYearMeta = [...indexData.years].sort((a, b) => {
     const yearA = resolveChronoYear(a);
     const yearB = resolveChronoYear(b);

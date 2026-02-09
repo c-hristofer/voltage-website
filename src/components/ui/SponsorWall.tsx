@@ -1,7 +1,10 @@
+// Shared UI component.
+
 import Image from 'next/image';
 import { SponsorsData } from '@/lib/schemas';
 import { withBasePath } from '@/lib/paths';
 
+// Render sponsor tiers and their current sponsors.
 export default function SponsorWall({ data }: { data: SponsorsData }) {
   return (
     <div className="space-y-8">
