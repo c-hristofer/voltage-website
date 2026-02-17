@@ -27,22 +27,16 @@ export default async function HomePage() {
       }))
     )
     .slice(0, 8);
-  const locationParts = team.meeting.location.split(',');
-  const locationName = locationParts.shift()?.trim() ?? team.meeting.location;
-  const scheduleParts = team.meeting.schedule.split(',');
-  scheduleParts.shift();
-  const meetingTime = scheduleParts.join(', ').trim();
-  const meetingTimeText = meetingTime || team.meeting.schedule;
   return (
     <div className="mx-auto max-w-6xl space-y-16 px-4 py-10 lg:space-y-24 lg:px-6">
       <section className="glass-panel rounded-3xl border border-white/10 bg-gradient-to-r from-primary/30 via-primary/10 to-surface/70 p-8 text-white">
         <div className="space-y-6 text-white/90">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">↓ Upcoming Voltage Nights ↓</p>
           <div className="space-y-3 text-white dark:text-white">
-            <h1 className="font-display text-4xl text-white">Team voltage meets every Monday</h1>
+            <h1 className="font-display text-4xl text-white">Team voltage meets every Weekday</h1>
             <p className="text-base leading-relaxed text-foreground dark:text-white/90">
-              Drop in between <span className="font-semibold">{meetingTimeText}</span> at {locationName}. Tour the shop,
-              hang out with subsystem mentors, and see how we prep Voltage robots for competition.
+              Meetings are between <span className="font-semibold">6:00 PM - 9:00 PM</span> at Melbourne High School on
+              weekdays. Check the calendar page and follow us on instagram for more information and up to date information.
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-3">

@@ -236,3 +236,11 @@ header.sticky {
 .text-muted {
   color: var(--muted);
 }
+
+/* Instagram's embed script injects fixed widths, so force it to stay responsive on phones. */
+.instagram-media,
+.instagram-media iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}

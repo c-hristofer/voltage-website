@@ -23,11 +23,11 @@ const embedStyle = {
   border: 0,
   borderRadius: '3px',
   boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-  margin: '1px',
-  maxWidth: '540px',
-  minWidth: '326px',
+  margin: '0',
+  maxWidth: '100%',
+  minWidth: '0',
   padding: 0,
-  width: 'calc(100% - 2px)'
+  width: '100%'
 } as const;
 
 // Renders the instagram block and related setup.
@@ -37,9 +37,9 @@ export default function InstagramEmbed({ className }: InstagramEmbedProps) {
   }, []);
 
   return (
-    <div className={cn('rounded-3xl border border-white/10 bg-white p-4 shadow-[0_18px_55px_rgba(5,12,32,0.25)]', className)}>
+    <div className={cn('overflow-hidden rounded-3xl border border-white/10 bg-white p-4 shadow-[0_18px_55px_rgba(5,12,32,0.25)]', className)}>
       <blockquote
-        className="instagram-media"
+        className="instagram-media w-full"
         data-instgrm-permalink={embedUrl}
         data-instgrm-version="14"
         style={embedStyle}
