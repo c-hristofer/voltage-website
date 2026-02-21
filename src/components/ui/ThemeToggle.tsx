@@ -11,8 +11,12 @@ const THEME_STORAGE_KEY = 'theme';
 // Read the saved theme, defaulting to dark when no preference exists.
 function readThemePreference(): Theme {
   if (typeof window === 'undefined') return 'dark';
-  const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
-  return saved === 'light' ? 'light' : 'dark';
+  try {
+    const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return saved === 'light' ? 'light' : 'dark';
+  } catch {
+    return 'dark';
+  }
 }
 
 // Apply theme values to the root element so CSS variables and dark: classes stay in sync.
@@ -35,7 +39,11 @@ export default function ThemeToggle() {
     const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
     applyTheme(nextTheme);
-    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch {
+      // Some Safari privacy settings block storage access; theme still updates for this session.
+    }
   };
 
   return (
