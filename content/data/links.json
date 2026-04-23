@@ -1,5 +1,5 @@
 {
-  "joinForm": "https://forms.gle/2iBqZrgxPvtbfUEZ9",
+  "joinForm": "https://forms.gle/erdyWoS4CMbuajzs9",
   "calendarEmbed": "https://calendar.google.com/calendar/embed?title=Team%20Voltage%20Meeting%20Calendar&height=600&wkst=1&bgcolor=%23FFFFFF&src=voltage386%40gmail.com&color=%23853104&ctz=America%2FNew_York",
   "gamePage": "https://www.firstinspires.org/robotics/frc/game-and-season",
   "brandGuidelines": "/documents/brand_standards.pdf",
@@ -35,6 +35,13 @@
       "category": "Before Your First Meeting"
     },
     {
+      "title": "Branding Guidelines",
+      "type": "pdf",
+      "description": "Team Voltage brand standards for consistent, professional communications and visual design.",
+      "url": "/documents/brand_standards.pdf",
+      "category": "Team Branding Guide"
+    },
+    {
       "title": "Meeting Permission Form",
       "type": "pdf",
       "description": "Parent/guardian authorization for regular Voltage meetings.",
@@ -54,6 +61,111 @@
       "description": "Team Voltage policies, safety guidelines, and season expectations.",
       "url": "/documents/team_handbook.docx.pdf",
       "category": "PDFs & Downloads"
+    },
+    {
+      "title": "Photograph Release Form",
+      "type": "pdf",
+      "description": "Photo and film permission release used for team media and event coverage.",
+      "url": "/documents/photograph_release_form.pdf",
+      "category": "PDFs & Downloads"
+    },
+    {
+      "title": "FLL Voltage Challenge General Information",
+      "type": "pdf",
+      "description": "General information packet for the FLL Voltage Challenge.",
+      "url": "/documents/fll-voltage-challenge-team-information-packet.pdf",
+      "category": "FLL Voltage Challenge"
+    },
+    {
+      "title": "FLL Challenge Season Info",
+      "type": "pdf",
+      "description": "Official FLL Challenge SUBMERGED welcome letter and season overview.",
+      "url": "/documents/fll-challenge-submerged-welcome-letter.pdf",
+      "category": "FLL Voltage Challenge"
+    },
+    {
+      "title": "FLL Challenge Participation Rules",
+      "type": "pdf",
+      "description": "Participation rules for FLL Challenge teams.",
+      "url": "/documents/fll-challenge-participation-rules.pdf",
+      "category": "FLL Voltage Challenge"
+    },
+    {
+      "title": "FLL Challenge Game Board Map",
+      "type": "pdf",
+      "description": "SUBMERGED wireframe and grid reference for the game board.",
+      "url": "/documents/fll-challenge-submerged-wireframe-and-grid.pdf",
+      "category": "FLL Voltage Challenge"
+    },
+    {
+      "title": "FLL Challenge Awards Information",
+      "type": "pdf",
+      "description": "SUBMERGED awards information for FLL Challenge teams.",
+      "url": "/documents/fll-challenge-submerged-awards.pdf",
+      "category": "FLL Voltage Challenge"
+    },
+    {
+      "title": "2019 Varmint Newsletter: Voltage Report 1",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter sponsor and community update.",
+      "url": "/documents/varmint-2019-voltage-report-1.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2019 Varmint Newsletter: Voltage Report 2",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter sponsor and community update.",
+      "url": "/documents/varmint-2019-voltage-report-2.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 1",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-1.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 2",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-2.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 3",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-3.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 4",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-4.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 5",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-5.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: Weekly Report 6",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter weekly build-season report.",
+      "url": "/documents/varmint-2018-weekly-report-6.pdf",
+      "category": "Varmint Newsletter Archive"
+    },
+    {
+      "title": "2018 Varmint Newsletter: End of Year",
+      "type": "pdf",
+      "description": "Archived Varmint Newsletter end-of-year report.",
+      "url": "/documents/varmint-2018-end-of-year.pdf",
+      "category": "Varmint Newsletter Archive"
     }
   ]
 }

@@ -10,6 +10,7 @@ const eslintConfig = defineConfig([
     "docs/**",
     "out/**",
     "build/**",
+    "archive/**",
     "next-env.d.ts",
     "scripts/.tmp/**",
   ]),

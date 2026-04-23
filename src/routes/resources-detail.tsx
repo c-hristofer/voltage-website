@@ -13,9 +13,9 @@ const STATIC_RESOURCE_SLUGS = ['join-team', 'pre-season-forms', 'forms'] as cons
 type StaticResourceSlug = (typeof STATIC_RESOURCE_SLUGS)[number];
 
 // Labels for pre season titles so copy stays consistent.
-const PRE_SEASON_TITLES = ['Safety Quiz', 'Student Contract', 'Student Information Form'];
+const PRE_SEASON_TITLES = ['New / Interested Student Signup', 'Safety Quiz', 'Student Contract', 'Student Information Form'];
 // Labels for form titles so copy stays consistent.
-const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Student Handbook'];
+const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Student Handbook', 'Photograph Release Form'];
 
 // True when the slug is one of the built-in resource pages.
 function isStaticResourceSlug(slug: string): slug is StaticResourceSlug {
@@ -120,7 +120,7 @@ async function renderStaticResourcesPage(slug: StaticResourceSlug) {
         <section className="rounded-3xl border border-white/10 bg-primary/10 p-6">
           <SectionHeader
             title="How to join"
-            description="Just submit the join form and we will email you our meeting calendar, onboarding nights, and ways guardians can stay in the loop."
+            description="Students in grades 9-12 who are interested in joining Team Voltage should submit the New / Interested Student Signup form, and we will be in contact soon."
           />
           <CTAButton href={links.joinForm} label="Complete join form" className="mt-4" />
         </section>
@@ -131,8 +131,8 @@ async function renderStaticResourcesPage(slug: StaticResourceSlug) {
             description="Once the form is submitted, the leadership team will:"
           />
           <ul className="space-y-3 text-sm text-white/80">
-            <li>- Email you the Monday build schedule and campus directions.</li>
-            <li>- Invite guardians to our REMIND channel and newsletter.</li>
+            <li>- Email you the Monday meeting schedule and campus directions.</li>
+            <li>- Help you complete the required annual forms.</li>
             <li>- Schedule your safety orientation and subsystem tours.</li>
           </ul>
           <p className="text-sm text-white/70">
@@ -153,7 +153,7 @@ async function renderStaticResourcesPage(slug: StaticResourceSlug) {
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 lg:px-0">
         <PageHeader
           title="Pre-season forms"
-          description="Complete these digital forms before your first full build meeting so we can set up safety credentials and communication tools."
+          description="All new and returning students complete these annual online forms. The safety quiz must be passed before students handle tools or equipment."
           breadcrumbs={[
             { label: 'Home', href: '/' },
             { label: 'Resources', href: '/resources' },
@@ -182,7 +182,7 @@ async function renderStaticResourcesPage(slug: StaticResourceSlug) {
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 lg:px-0">
       <PageHeader
         title="Forms"
-        description="Download the latest PDFs for meetings, medical releases, and the team handbook. Signed copies are required before competitions."
+        description="Download the latest PDFs for meetings, medical releases, photo releases, and the team handbook. Signed copies are required within the first two weeks of joining."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Resources', href: '/resources' },

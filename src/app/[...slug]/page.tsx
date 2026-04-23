@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getNewsSlugs, getResourceSlugs, getRobotYears } from '@/lib/content';
+import { getNewsSlugs, getResourceSlugs } from '@/lib/content';
 import AboutPage, { metadata as aboutMetadata } from '@/routes/about';
 import AboutAwardsPage, { metadata as aboutAwardsMetadata } from '@/routes/about-awards';
 import AboutHistoryPage, { metadata as aboutHistoryMetadata } from '@/routes/about-history';
@@ -21,10 +21,11 @@ import ResourcesPage, { metadata as resourcesIndexMetadata } from '@/routes/reso
 import ResourcesDetailPage, {
   generateMetadata as generateResourcesDetailMetadata
 } from '@/routes/resources-detail';
-import RobotsPage, { metadata as robotsIndexMetadata } from '@/routes/robots-index';
-import RobotsDetailPage, {
-  generateMetadata as generateRobotsDetailMetadata
-} from '@/routes/robots-detail';
+// Archived 2026-04-22: robot routes are intentionally disabled.
+// import RobotsPage, { metadata as robotsIndexMetadata } from '@/routes/robots-index';
+// import RobotsDetailPage, {
+//   generateMetadata as generateRobotsDetailMetadata
+// } from '@/routes/robots-detail';
 import SponsorsPage, { metadata as sponsorsMetadata } from '@/routes/sponsors';
 
 type ParsedRoute =
@@ -41,8 +42,9 @@ type ParsedRoute =
   | { kind: 'outreach-detail'; slug: string }
   | { kind: 'resources-index' }
   | { kind: 'resources-detail'; slug: string }
-  | { kind: 'robots-index' }
-  | { kind: 'robots-detail'; year: string }
+  // Archived 2026-04-22: robot routes are intentionally disabled.
+  // | { kind: 'robots-index' }
+  // | { kind: 'robots-detail'; year: string }
   | { kind: 'sponsors' };
 
 // Parses route into a predictable shape.
@@ -57,7 +59,8 @@ function parseRoute(segments: string[]): ParsedRoute | null {
     if (first === 'news') return { kind: 'news-index' };
     if (first === 'outreach') return { kind: 'outreach-index' };
     if (first === 'resources') return { kind: 'resources-index' };
-    if (first === 'robots') return { kind: 'robots-index' };
+    // Archived 2026-04-22: robot routes are intentionally disabled.
+    // if (first === 'robots') return { kind: 'robots-index' };
     if (first === 'sponsors') return { kind: 'sponsors' };
     return null;
   }
@@ -69,7 +72,8 @@ function parseRoute(segments: string[]): ParsedRoute | null {
     if (first === 'news') return { kind: 'news-detail', slug: second };
     if (first === 'outreach') return { kind: 'outreach-detail', slug: second };
     if (first === 'resources') return { kind: 'resources-detail', slug: second };
-    if (first === 'robots') return { kind: 'robots-detail', year: second };
+    // Archived 2026-04-22: robot routes are intentionally disabled.
+    // if (first === 'robots') return { kind: 'robots-detail', year: second };
   }
 
   return null;
@@ -80,10 +84,9 @@ export const revalidate = false;
 
 // Precomputes dynamic path values so Next.js can statically generate each route.
 export async function generateStaticParams() {
-  const [newsSlugs, resourceSlugsFromContent, robotYearsFromContent] = await Promise.all([
+  const [newsSlugs, resourceSlugsFromContent] = await Promise.all([
     getNewsSlugs(),
-    getResourceSlugs(),
-    getRobotYears()
+    getResourceSlugs()
   ]);
 
   // Outreach detail pages generated from static slug constants.
@@ -95,8 +98,8 @@ export async function generateStaticParams() {
     'forms',
     ...resourceSlugsFromContent
   ];
-  // Keep year slugs in one list so static generation stays predictable.
-  const robotYears = ['2026', ...robotYearsFromContent.map((year) => year.toString())];
+  // Archived 2026-04-22: robot detail route generation is intentionally disabled.
+  // const robotYears = ['2026', ...robotYearsFromContent.map((year) => year.toString())];
 
   const staticSegments: string[][] = [
     ['about'],
@@ -109,7 +112,8 @@ export async function generateStaticParams() {
     ['news'],
     ['outreach'],
     ['resources'],
-    ['robots'],
+    // Archived 2026-04-22: robot index route is intentionally disabled.
+    // ['robots'],
     ['sponsors']
   ];
 
@@ -118,8 +122,9 @@ export async function generateStaticParams() {
     ...staticSegments,
     ...newsSlugs.map((slug) => ['news', slug]),
     ...outreachDetailSlugs.map((slug) => ['outreach', slug]),
-    ...resourceDetailSlugs.map((slug) => ['resources', slug]),
-    ...robotYears.map((year) => ['robots', year])
+    ...resourceDetailSlugs.map((slug) => ['resources', slug])
+    // Archived 2026-04-22: robot detail routes are intentionally disabled.
+    // ...robotYears.map((year) => ['robots', year])
   ];
 
   const unique = new Set(allSegments.map((segments) => segments.join('/')));
@@ -167,10 +172,11 @@ export async function generateMetadata({
       return resourcesIndexMetadata;
     case 'resources-detail':
       return generateResourcesDetailMetadata({ params: Promise.resolve({ slug: route.slug }) });
-    case 'robots-index':
-      return robotsIndexMetadata;
-    case 'robots-detail':
-      return generateRobotsDetailMetadata({ params: Promise.resolve({ year: route.year }) });
+    // Archived 2026-04-22: robot routes are intentionally disabled.
+    // case 'robots-index':
+    //   return robotsIndexMetadata;
+    // case 'robots-detail':
+    //   return generateRobotsDetailMetadata({ params: Promise.resolve({ year: route.year }) });
     case 'sponsors':
       return sponsorsMetadata;
     default:
@@ -219,10 +225,11 @@ export default async function FlatRoutePage({
       return <ResourcesPage />;
     case 'resources-detail':
       return <ResourcesDetailPage params={Promise.resolve({ slug: route.slug })} />;
-    case 'robots-index':
-      return <RobotsPage />;
-    case 'robots-detail':
-      return <RobotsDetailPage params={Promise.resolve({ year: route.year })} />;
+    // Archived 2026-04-22: robot routes are intentionally disabled.
+    // case 'robots-index':
+    //   return <RobotsPage />;
+    // case 'robots-detail':
+    //   return <RobotsDetailPage params={Promise.resolve({ year: route.year })} />;
     case 'sponsors':
       return <SponsorsPage />;
     default:

@@ -29,14 +29,44 @@ export default async function HomePage() {
     .slice(0, 8);
   return (
     <div className="mx-auto max-w-6xl space-y-16 px-4 py-10 lg:space-y-24 lg:px-6">
+      <section className="glass-panel grid gap-8 rounded-3xl p-5 sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
+        <div className="space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+            Voltage 386
+          </p>
+          <h2 className="font-display text-4xl text-foreground drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]">
+            Team Voltage 386 builds precise robots and future-ready student leaders.
+          </h2>
+          <p className="text-lg text-muted">
+            Precision engineering, high-energy competition, and measurable community impact power every season.
+            Join us to design, code, and drive world-class robots from Melbourne, Florida.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <CTAButton href="/resources/join-team" label="Join the Team" />
+            <CTAButton href="/sponsors" label="Sponsor Voltage" variant="outline" />
+          </div>
+        </div>
+        <Image
+          src={withBasePath('/images/media/impact-award-team-2026.jpeg')}
+          alt="Team Voltage students holding the 2026 FIRST Impact Award banner at Tallahassee Regional"
+          width={1465}
+          height={1099}
+          className="h-auto w-full self-start rounded-2xl object-contain"
+          priority
+        />
+        <div className="lg:col-span-2">
+          <StatsRow metrics={metrics} />
+        </div>
+      </section>
+
       <section className="glass-panel rounded-3xl border border-white/10 bg-gradient-to-r from-primary/30 via-primary/10 to-surface/70 p-8 text-white">
         <div className="space-y-6 text-white/90">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">↓ Upcoming Voltage Nights ↓</p>
           <div className="space-y-3 text-white dark:text-white">
-            <h1 className="font-display text-4xl text-white">Team voltage meets every Weekday</h1>
+            <h1 className="font-display text-4xl text-white">Team Voltage meets every Monday</h1>
             <p className="text-base leading-relaxed text-foreground dark:text-white/90">
-              Meetings are between <span className="font-semibold">6:00 PM - 9:00 PM</span> at Melbourne High School on
-              weekdays. Check the calendar page and follow us on instagram for more information and up to date information.
+              Meetings are <span className="font-semibold">{team.meeting.schedule}</span> at Melbourne High School.
+              Check the calendar page and follow us on Instagram for current meeting dates and event updates.
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
@@ -95,36 +125,6 @@ export default async function HomePage() {
           <div className="mt-6 flex justify-center">
             <InstagramEmbed className="w-full max-w-xl" />
           </div>
-        </div>
-      </section>
-
-      <section className="glass-panel grid gap-10 rounded-3xl p-8 lg:grid-cols-2">
-        <div className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
-            Voltage 386
-          </p>
-          <h2 className="font-display text-4xl text-foreground drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]">
-            Team Voltage 386 builds precise robots and future-ready student leaders.
-          </h2>
-          <p className="text-lg text-muted">
-            Precision engineering, high-energy competition, and measurable community impact power every season.
-            Join us to design, code, and drive world-class robots from Melbourne, Florida.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <CTAButton href="/resources/join-team" label="Join the Team" />
-            <CTAButton href="/sponsors" label="Sponsor Voltage" variant="outline" />
-          </div>
-          <StatsRow metrics={metrics} />
-        </div>
-        <div className="glass-card rounded-3xl border border-white/10 bg-card/80 p-4">
-          <Image
-            src={withBasePath('/images/robots/robot-2025.png')}
-            alt="Team Voltage robot driving at competition"
-            width={900}
-            height={700}
-            className="h-full w-full rounded-2xl object-cover"
-            priority
-          />
         </div>
       </section>
 

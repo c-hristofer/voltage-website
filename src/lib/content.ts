@@ -14,7 +14,6 @@ import {
   outreachFrontmatterSchema,
   pressKitSchema,
   resourceFrontmatterSchema,
-  robotFrontmatterSchema,
   socialsSchema,
   sponsorsSchema,
   teamSchema
@@ -24,7 +23,6 @@ import type {
   NewsFrontmatter,
   OutreachFrontmatter,
   ResourceFrontmatter,
-  RobotFrontmatter,
   SocialsData
 } from './schemas';
 import { loadMDXComponent, readFrontmatter, resolveContentPath } from './mdx';
@@ -138,93 +136,6 @@ export async function getNewsBySlug(slug: string) {
     newsFrontmatterSchema
   );
   return { content, frontmatter: frontmatter as NewsFrontmatter, slug };
-}
-
-export type RobotSummary = {
-  slug: string;
-  frontmatter: RobotFrontmatter;
-  content: ReactNode;
-};
-
-export const getRobotYears = cache(async (): Promise<number[]> => {
-  const dir = resolveContentPath('robots');
-  const files = await listMdxFiles(dir);
-  const years = await Promise.all(
-    files.map(async (file) => {
-      const frontmatter = await readFrontmatter(
-        path.join(dir, file),
-        robotFrontmatterSchema
-      );
-      return frontmatter.year;
-    })
-  );
-  return years;
-});
-
-export const getRobots = cache(async () => {
-  const dir = resolveContentPath('robots');
-  const files = await listMdxFiles(dir);
-  const robots = await Promise.all(
-    files.map(async (file) => {
-      const { content, frontmatter } = await loadMDXComponent(
-        path.join(dir, file),
-        robotFrontmatterSchema
-      );
-      return {
-        slug: getSlug(file),
-        content,
-        frontmatter
-      };
-    })
-  );
-  return robots.sort((a, b) => b.frontmatter.year - a.frontmatter.year);
-});
-
-// Get robot frontmatter for a specific season year.
-export async function getRobotFrontmatterByYear(year: number) {
-  const dir = resolveContentPath('robots');
-  const files = await listMdxFiles(dir);
-
-  for (const file of files) {
-    const frontmatter = await readFrontmatter(
-      path.join(dir, file),
-      robotFrontmatterSchema
-    );
-    if (frontmatter.year === year) {
-      return {
-        slug: getSlug(file),
-        frontmatter
-      };
-    }
-  }
-
-  return null;
-}
-
-// Get rendered robot content for a specific season year.
-export async function getRobotByYear(year: number) {
-  const dir = resolveContentPath('robots');
-  const files = await listMdxFiles(dir);
-
-  for (const file of files) {
-    const filePath = path.join(dir, file);
-    const frontmatter = await readFrontmatter(filePath, robotFrontmatterSchema);
-    if (frontmatter.year !== year) {
-      continue;
-    }
-
-    const { content, frontmatter: fullFrontmatter } = await loadMDXComponent(
-      filePath,
-      robotFrontmatterSchema
-    );
-    return {
-      slug: getSlug(file),
-      frontmatter: fullFrontmatter as RobotFrontmatter,
-      content
-    };
-  }
-
-  return null;
 }
 
 export type OutreachSummary = OutreachFrontmatter & { slug: string; body: string };

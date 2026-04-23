@@ -16,36 +16,35 @@
   },
   "values": [
     {
-      "title": "Precision",
-      "description": "We engineer dependable mechanisms and code with a focus on quality, safety, and competitive readiness."
+      "title": "Gracious Professionalism",
+      "description": "We compete with intensity while treating other teams, volunteers, mentors, and sponsors with respect and kindness."
     },
     {
-      "title": "Energy",
-      "description": "Voltage 386 brings high-powered enthusiasm to every event, demo, and outreach moment."
+      "title": "Teamwork",
+      "description": "Students from schools across Brevard County work with mentors to solve hard problems together."
     },
     {
-      "title": "Engineering",
-      "description": "Students collaborate with professional mentors to apply rigorous engineering processes from concept through competition."
+      "title": "Innovation",
+      "description": "Each FIRST season gives students a new engineering challenge that rewards creative thinking, testing, and iteration."
     },
     {
       "title": "Community Impact",
-      "description": "We mentor younger teams, run Sparky’s STEAM Camp, and deliver programs that uplift Brevard County."
+      "description": "We promote STEAM through FLL mentoring, the FLL Voltage Challenge, Sparky's STEAM Camp, demos, and outreach events."
     }
   ],
   "season": {
-    "year": 2026,
-    "game": "REBUILT",
+    "year": 2025,
+    "game": "REEFSCAPE",
     "presentedBy": "Haas",
-    "summary": "We are designing a robust REBUILT robot with faster scoring cycles, higher reliability, and a transparent data pipeline so new students can own the game strategy.",
+    "summary": "In REEFSCAPE presented by Haas, alliances score coral, harvest algae, and attach to the barge before time runs out.",
     "goals": [
-      "Consistently rank in the top 8 at both regional events",
-      "Deploy an adaptive autonomous routine for every alliance partner",
-      "Expand season media coverage to unlock two new Einstein-level sponsors"
+      "Represent Team Voltage at the Tallahassee Regional",
+      "Represent Team Voltage at the Houston Championship",
+      "Share the season through team outreach, photos, and sponsor updates"
     ],
     "events": [
-      "Orlando Regional",
-      "South Florida Regional",
-      "FIRST Championship (goal)"
+      "Tallahassee Regional",
+      "Houston Championship"
     ]
   },
   "history": [
@@ -85,102 +84,66 @@
       "description": "Sparky’s STEAM Camp and year-round outreach events now serve hundreds of students annually."
     }
   ],
-  "leadership": [
-    {
-      "role": "Team Captain",
-      "name": "Avery Lin",
-      "focus": "Strategy & Drive",
-      "bio": "Coordinates match strategy, drive team practice, and cross-team communication so every subsystem is competition-ready.",
-      "photo": "/images/placeholders/leader.svg"
-    },
-    {
-      "role": "Engineering Director",
-      "name": "Miguel Ramirez",
-      "focus": "Mechanical & CAD",
-      "bio": "Leads design reviews, maintains the CAD release schedule, and mentors students on precision build techniques.",
-      "photo": "/images/placeholders/leader.svg"
-    },
-    {
-      "role": "Electrical & Controls Lead",
-      "name": "Priya Shah",
-      "focus": "Controls",
-      "bio": "Owns robot wiring standards, sensor validation, and documentation for handoff between pit and programming crews.",
-      "photo": "/images/placeholders/leader.svg"
-    },
-    {
-      "role": "Programming Lead",
-      "name": "Ethan Garber",
-      "focus": "Software",
-      "bio": "Guides autonomous development, scouting integrations, and runtime analytics for the REBUILT season.",
-      "photo": "/images/placeholders/leader.svg"
-    },
-    {
-      "role": "Operations & Impact",
-      "name": "Lena Briggs",
-      "focus": "Outreach",
-      "bio": "Runs communications, sponsorship deliverables, and Sparky’s STEAM Camp logistics with a student-led crew.",
-      "photo": "/images/placeholders/leader.svg"
-    }
-  ],
+  "leadership": [],
   "mentors": [
     {
       "name": "Juan Davila",
       "title": "Lead Mechanical Mentor",
-      "bio": "Mechanical engineer at L3Harris; founding mentor who values FIRST for its authentic engineering challenges.",
+      "bio": "Mechanical engineer at Harris/L3Harris with BS and MS degrees from Florida Tech. Juan has been part of Team Voltage since the beginning with Okie and values FIRST because it gives students a real-world challenge that changes every season.",
       "photo": "/images/mentors/juan-davila.jpg"
     },
     {
       "name": "DeAnn Davila",
       "title": "Controls & Inspection",
-      "bio": "Manufacturing engineer and long-time FIRST official who guides students through quality and inspection readiness.",
+      "bio": "Manufacturing engineer at Harris/L3Harris with a BS in Mechanical Engineering from the University of Rochester. DeAnn has served FIRST for many years as a FIRST Technical Advisor, Lead Robot Inspector, and referee at regional and championship events.",
       "photo": "/images/mentors/deann-davila.jpg"
     },
     {
       "name": "Joe Bernier",
       "title": "Electrical Systems",
-      "bio": "Retired engineering leader specializing in electronics, sensors, and controls since 2002.",
+      "bio": "Retired engineering manager for Northrop Grumman and United Space Alliance at Kennedy Space Center. Joe has mentored Team Voltage since 2002, teaching students electronics, sensors, and robot controls.",
       "photo": "/images/mentors/joe-bernier.jpg"
     },
     {
       "name": "Debbie Bernier",
       "title": "Software & Alumni Support",
-      "bio": "Retired software engineer who mentors programming and inspires students to pursue STEM degrees.",
+      "bio": "Retired software engineer who spent 28 years developing avionics software at Rockwell Collins. Debbie joined through her children in 2002 and continues mentoring because FIRST helps students see themselves as capable college and STEM candidates.",
       "photo": "/images/mentors/debbie-bernier.jpg"
     },
     {
       "name": "Okie Baughman",
       "title": "Reliability & Fabrication",
-      "bio": "Retired reliability engineer whose Navy electronics background keeps our builds practical and tough.",
+      "bio": "Retired Harris reliability engineer with an Oklahoma State degree and Navy electronics background. Okie started with Juan on Scorp Squad in 1998 and helps students understand what engineering careers are really like.",
       "photo": "/images/mentors/okie-baughman.png"
     },
     {
       "name": "Daniel Kemp",
       "title": "Operations & Alumni Mentor",
-      "bio": "Former student turned mentor focused on team operations and sustaining Voltage culture.",
+      "bio": "Supply chain professional at Harris/L3Harris. Daniel started with Team Voltage as a student in 2005, became the team's first mentor-in-training, and returned to give back to the program that taught him so much.",
       "photo": "/images/mentors/daniel-kemp.jpg"
     },
     {
       "name": "William Davies",
       "title": "Hardware & Software Integration",
-      "bio": "Maritime robotics engineer who helps align software, electrical, and mechanical systems.",
+      "bio": "Maritime robotics engineer at L3Harris. William began FIRST in 2006 with L.C. Bird HS Robohawks 346 and joined Voltage in 2015 after earning a BS in Aerospace Engineering, mentoring software, electrical, and mechanical integration.",
       "photo": "/images/mentors/william-davies.jpg"
     },
     {
       "name": "Janielle Ziegler",
       "title": "Team Operations",
-      "bio": "Project support specialist and former student mentor focusing on team ops, spirit, and event execution.",
+      "bio": "Project Support Specialist at Health First and Team Voltage alumna. Janielle was a student from 2007-2009, mentor-in-training from 2009-2011, returned in 2018 for Team Ops and Spirit, and became a FIRST Robotics Competition Field Supervisor in 2020.",
       "photo": "/images/mentors/janielle-ziegler.jpg"
     },
     {
       "name": "Joe Foster",
       "title": "Fabrication Mentor",
-      "bio": "Mechanical engineering alum who teaches machining, wood construction, and robust robot design.",
+      "bio": "Florida native, University of Florida mechanical engineering graduate, and FIRST coach or mentor since 2010. Joe teaches students wood construction, metal fabrication, and practical robot design skills.",
       "photo": "/images/mentors/placeholder.png"
     },
     {
       "name": "Tom Gabeler",
       "title": "Engineering Teacher",
-      "bio": "Engineering technology teacher at Melbourne High and longtime FIRST mentor.",
+      "bio": "Engineering Technology teacher at Melbourne High since 2001 and FIRST mentor since 2002. Tom loves robotics and still looks forward to class every day.",
       "photo": "/images/mentors/tom-gabeler.jpg"
     }
   ],

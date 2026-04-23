@@ -8,16 +8,10 @@ import CTAButton from '@/components/ui/CTAButton';
 import { getRobotByYear, getRobotFrontmatterByYear, getRobots } from '@/lib/content';
 import { withBasePath } from '@/lib/paths';
 
-// Keep special year pages in one place so updates stay synchronized.
-const SPECIAL_YEAR_PAGES = [2026];
-
 // Precomputes dynamic path values so Next.js can statically generate each route.
 export async function generateStaticParams() {
   const robots = await getRobots();
-  const years = new Set<number>([
-    ...robots.map((robot) => robot.frontmatter.year),
-    ...SPECIAL_YEAR_PAGES
-  ]);
+  const years = new Set<number>(robots.map((robot) => robot.frontmatter.year));
   return Array.from(years).map((year) => ({ year: year.toString() }));
 }
 
@@ -32,9 +26,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { year: yearParam } = await params;
   const year = Number(yearParam);
-  if (year === 2026) {
-    return { title: '2026 Robot' };
-  }
   const robot = await getRobotFrontmatterByYear(year);
   if (!robot) return { title: `Robot ${yearParam}` };
   return {
@@ -51,10 +42,6 @@ export default async function RobotDetail({
 }) {
   const { year: yearParam } = await params;
   const year = Number(yearParam);
-
-  if (year === 2026) {
-    return renderRobot2026Page();
-  }
 
   const robot = await getRobotByYear(year);
   if (!robot) {
@@ -106,49 +93,6 @@ export default async function RobotDetail({
       <div className="rounded-3xl border border-white/10 bg-card/70 p-6 text-center">
         <p className="text-sm text-white/70">Need more technical detail or want to collaborate? We love partner engineering reviews.</p>
         <CTAButton href="/contact" label="Request more info" className="mt-3" />
-      </div>
-    </div>
-  );
-}
-
-// Keep robot2026 page markup in a helper so this file stays easy to scan.
-async function renderRobot2026Page() {
-  const robot = await getRobotFrontmatterByYear(2026);
-
-  return (
-    <div className="mx-auto max-w-5xl space-y-8 px-4 py-12 lg:px-0">
-      <PageHeader
-        title={robot?.frontmatter.name ?? '2026 Robot Preview'}
-        description={
-          robot?.frontmatter.summary ??
-          'Our REBUILT machine is still under wraps. Check back soon for subsystem reveals, CAD, media, and match footage.'
-        }
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Robots', href: '/robots' },
-          { label: '2026 Robot' }
-        ]}
-      />
-      {robot?.frontmatter.heroImage && (
-        <div className="rounded-3xl border border-white/10 bg-card/70 p-4">
-          <Image
-            src={withBasePath(robot.frontmatter.heroImage)}
-            alt={robot.frontmatter.name}
-            width={1200}
-            height={600}
-            className="w-full rounded-2xl object-cover"
-          />
-        </div>
-      )}
-      <div className="rounded-3xl border border-dashed border-white/20 bg-surface/70 p-6 text-sm text-white/70">
-        <p>
-          We are documenting prototypes, drive testing, and fabrication milestones. As soon as we lock in the final
-          design this page will include a full technical breakdown and media gallery.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <CTAButton href="/contact" label="Contact Voltage" />
-          <CTAButton href="/outreach#programs" label="Request a demo" variant="outline" />
-        </div>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default async function OutreachPage() {
   const [entries, metrics] = await Promise.all([getOutreachEntries(), getMetrics()]);
   const events = entries.filter((entry) => entry.type === 'event');
+  const programs = entries.filter((entry) => entry.type === 'program');
 
   return (
     <div className="mx-auto max-w-6xl space-y-16 px-4 py-12 lg:px-6">
@@ -31,19 +32,58 @@ export default async function OutreachPage() {
 
       <section id="events" className="space-y-6">
         <SectionHeader
-          title="Events"
-          description="Seasonal activations plus Sparky’s STEAM Camp."
+          title="Community outreach"
+          description="Since 2018, Team Voltage has expanded outreach that promotes STEAM and encourages the next generation of leaders."
           className="md:max-w-2xl"
         />
         <div className="grid gap-4 md:grid-cols-2">
           <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Weekly Service</p>
-            <h3 className="text-2xl font-display text-white">Melbourne Beach Cleanup</h3>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Community Service</p>
+            <h3 className="text-2xl font-display text-white">Beach Cleanups</h3>
             <p className="mt-2 text-sm text-white/70">
-              Every Sunday morning, Voltage students and mentors log shoreline litter, remove debris before it reaches the Indian River Lagoon, and invite young alumni to model environmental stewardship for incoming members.
+              Living on Brevard’s Space Coast gives Voltage close access to Florida’s beaches. Starting in 2025, the team
+              collaborated with Keep Brevard Beautiful to clean up local beaches and build responsibility through monthly
+              outreach.
             </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.25em] text-foreground/70 dark:text-white/50">
-              15 miles of coast • 2,400+ pounds removed
+          </article>
+          <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Outreach Event</p>
+            <h3 className="text-2xl font-display text-white">STEAM Demos</h3>
+            <p className="mt-2 text-sm text-white/70">
+              At Maker Faires and elementary school STEAM nights, Voltage demos the competition robot and teaches robotics
+              concepts through paper circuits with LEDs, copper tape, button batteries, and binary bracelets.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service Project</p>
+            <h3 className="text-2xl font-display text-white">Toys for Tots</h3>
+            <p className="mt-2 text-sm text-white/70">
+              Voltage began working with the local Toys for Tots distribution center in 2022, collecting 102 toys that year.
+              In 2023, the team partnered with Melbourne High School’s National Honor Society and collected 666 toys.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Partnership</p>
+            <h3 className="text-2xl font-display text-white">NASA House Team</h3>
+            <p className="mt-2 text-sm text-white/70">
+              Voltage became a NASA House Team during the 2023-2024 season, gaining access to NASA build space, kickoff at
+              Kennedy Space Center, and outreach collaboration with The Pink Team 233.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Community Event</p>
+            <h3 className="text-2xl font-display text-white">Women in STEM Movie Night</h3>
+            <p className="mt-2 text-sm text-white/70">
+              Since 2023, Voltage has hosted a Women in STEM movie night to inspire young girls to pursue STEM careers and
+              hear from women working in STEM fields.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Team Project</p>
+            <h3 className="text-2xl font-display text-white">Voltage Around the World</h3>
+            <p className="mt-2 text-sm text-white/70">
+              Voltage Around the World spreads the word of FIRST Robotics and Team Voltage’s Gracious Professionalism as
+              team members visit landmarks and share their FIRST cheer around the globe.
             </p>
           </article>
           {events.map((event) => {
@@ -81,6 +121,18 @@ export default async function OutreachPage() {
               </article>
             );
           })}
+          {programs.map((program) => (
+            <article key={program.slug} className="rounded-3xl border border-white/10 bg-surface/70 p-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Program</p>
+              <h3 className="text-2xl font-display text-white">{program.title}</h3>
+              <p className="mt-2 text-sm text-white/70">{program.summary}</p>
+              {program.ctaLabel && program.ctaUrl && (
+                <div className="mt-4">
+                  <CTAButton href={program.ctaUrl} label={program.ctaLabel} />
+                </div>
+              )}
+            </article>
+          ))}
         </div>
       </section>
 
@@ -89,7 +141,7 @@ export default async function OutreachPage() {
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-3xl border border-white/10 bg-card/70 p-4 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Students reached</p>
-            <p className="font-display text-4xl text-accent">{metrics.students + 200}</p>
+            <p className="font-display text-4xl text-accent">HUNDREDS</p>
           </div>
           <div className="rounded-3xl border border-white/10 bg-card/70 p-4 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Outreach hours</p>

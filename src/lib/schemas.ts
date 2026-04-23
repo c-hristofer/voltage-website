@@ -91,11 +91,11 @@ export const teamSchema = z.object({
 
 // Validation schema for metrics.
 export const metricsSchema = z.object({
-  yearsActive: z.number(),
-  awards: z.number(),
-  students: z.number(),
+  yearsActive: z.union([z.number(), z.string()]),
+  awards: z.union([z.number(), z.string()]),
+  students: z.union([z.number(), z.string()]),
   mentors: z.number(),
-  outreachHours: z.number()
+  outreachHours: z.union([z.number(), z.string()])
 });
 
 // Validation schema for sponsor tier.
@@ -107,7 +107,7 @@ export const sponsorTierSchema = z.object({
   sponsors: z.array(
     z.object({
       name: z.string(),
-      logo: z.string(),
+      logo: z.string().optional(),
       url: httpUrlField.optional()
     })
   )
@@ -229,18 +229,6 @@ export const newsFrontmatterSchema = z.object({
   ctaUrl: ctaLinkField.optional()
 });
 
-// Validation schema for robot frontmatter.
-export const robotFrontmatterSchema = z.object({
-  year: z.number(),
-  name: z.string(),
-  game: z.string(),
-  status: z.string(),
-  heroImage: z.string().optional(),
-  summary: z.string(),
-  highlights: z.array(z.string()),
-  specs: z.array(z.object({ label: z.string(), value: z.string() }))
-});
-
 // Validation schema for outreach frontmatter.
 export const outreachFrontmatterSchema = z.object({
   title: z.string(),
@@ -270,6 +258,5 @@ export type AwardsData = z.infer<typeof awardsSchema>;
 export type HistoryFrontmatter = z.infer<typeof historyFrontmatterSchema>;
 export type PressKitData = z.infer<typeof pressKitSchema>;
 export type NewsFrontmatter = z.infer<typeof newsFrontmatterSchema>;
-export type RobotFrontmatter = z.infer<typeof robotFrontmatterSchema>;
 export type OutreachFrontmatter = z.infer<typeof outreachFrontmatterSchema>;
 export type ResourceFrontmatter = z.infer<typeof resourceFrontmatterSchema>;

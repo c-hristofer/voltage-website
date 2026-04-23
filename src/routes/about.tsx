@@ -43,6 +43,26 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      <section id="origin" className="space-y-4 rounded-3xl border border-white/10 bg-surface/70 p-6">
+        <SectionHeader
+          title="What is Team Voltage?"
+          description="FIRST Robotics Team 386, Team Voltage, began at Satellite High School in 1998 as Team 248 Scorpsquad."
+        />
+        <div className="space-y-4 text-sm leading-relaxed text-white/75">
+          <p>
+            The team moved to a new location in 1999 because single-school sponsorship was difficult, then opened membership
+            to students from any area high school without an FRC team of their own. Team Voltage 386 became a South Brevard
+            County team with students from ten different high schools and relocated to Melbourne High School in 2006, where
+            the team still meets today.
+          </p>
+          <p>
+            In 2002, Team Voltage was the first FRC team in Brevard County asked to present FIRST to the school board. That
+            advocacy helped Brevard County Schools recognize the value of FIRST programs and contributed to wider FRC and FLL
+            support across the county.
+          </p>
+        </div>
+      </section>
+
       <section id="mentors" className="space-y-6">
         <SectionHeader title="Mentors" description="Professional engineers, educators, and alumni guide subteams, safety processes, and competition strategy." />
         <div className="grid gap-4 md:grid-cols-2">

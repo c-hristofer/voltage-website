@@ -1,7 +1,7 @@
 // App-level Next.js configuration.
 
 import type { MetadataRoute } from 'next';
-import { getNewsSlugs, getRobotYears } from '@/lib/content';
+import { getNewsSlugs } from '@/lib/content';
 
 // Base url value reused across the app configuration.
 const baseUrl = 'https://www.teamvoltage.org';
@@ -11,12 +11,13 @@ export const revalidate = false;
 
 // Build sitemap entries from static and content-driven routes.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [robotYears, newsSlugs] = await Promise.all([getRobotYears(), getNewsSlugs()]);
+  const newsSlugs = await getNewsSlugs();
   // Static pages that are always present.
   const staticRoutes = [
     '',
     '/about',
-    '/robots',
+    // Archived 2026-04-22: robot routes are intentionally disabled.
+    // '/robots',
     '/resources',
     '/outreach',
     '/outreach/media',
@@ -34,12 +35,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/resources/pre-season-forms'
   ];
 
-  // Dynamic robot detail routes.
-  const robotRoutes = robotYears.map((year) => `/robots/${year}`);
+  // Archived 2026-04-22: robot detail routes are intentionally disabled.
+  // const robotRoutes = robotYears.map((year) => `/robots/${year}`);
   // Dynamic news detail routes.
   const newsRoutes = newsSlugs.map((slug) => `/news/${slug}`);
 
-  return [...staticRoutes, ...robotRoutes, ...newsRoutes].map((route) => ({
+  return [...staticRoutes, ...newsRoutes].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date()
   }));

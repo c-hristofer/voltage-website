@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 // Labels for pre season titles so copy stays consistent.
-const PRE_SEASON_TITLES = ['Safety Quiz', 'Student Contract', 'Student Information Form'];
+const PRE_SEASON_TITLES = ['New / Interested Student Signup', 'Safety Quiz', 'Student Contract', 'Student Information Form'];
 // Labels for form titles so copy stays consistent.
-const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Student Handbook'];
+const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Student Handbook', 'Photograph Release Form'];
 
 // Renders the resources page.
 export default async function ResourcesPage() {
@@ -22,6 +22,9 @@ export default async function ResourcesPage() {
   const links = await getLinks();
   const preSeasonForms = links.documents.filter((doc) => PRE_SEASON_TITLES.includes(doc.title));
   const forms = links.documents.filter((doc) => FORM_TITLES.includes(doc.title));
+  const otherResources = links.documents.filter(
+    (doc) => !PRE_SEASON_TITLES.includes(doc.title) && !FORM_TITLES.includes(doc.title)
+  );
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-0">
@@ -37,7 +40,7 @@ export default async function ResourcesPage() {
       <section className="rounded-3xl border border-white/10 bg-primary/10 p-6 dark:border-white/15 dark:bg-white/5">
         <SectionHeader
           title="How to join"
-          description="Just submit the join form and we will email you our meeting calendar, onboarding nights, and ways guardians can stay in the loop."
+          description="Students in grades 9-12 who are interested in joining Team Voltage should submit the New / Interested Student Signup form, and we will be in contact soon."
         />
         <CTAButton href={links.joinForm} label="Complete join form" className="mt-4" />
       </section>
@@ -45,7 +48,7 @@ export default async function ResourcesPage() {
       <section className="space-y-4">
         <SectionHeader
           title="Pre-season forms"
-          description="Complete these digital forms before your first full build meeting so we can configure safety credentials and communication tools."
+          description="All new and returning students complete the signup, safety quiz, student contract, and student information form every year."
         />
         <div className="grid gap-4">
           {preSeasonForms.map((form) => (
@@ -65,10 +68,29 @@ export default async function ResourcesPage() {
       <section className="space-y-4">
         <SectionHeader
           title="Forms"
-          description="Download the latest PDFs for meetings, medical releases, and the team handbook. Signed copies are required before competitions."
+          description="Print, sign, and turn in the meeting permission form, medical release, and student handbook within the first two weeks of joining. The medical release must be notarized."
         />
         <div className="grid gap-4">
           {forms.map((doc) => (
+            <ResourceDownload
+              key={doc.title}
+              title={doc.title}
+              description={doc.description}
+              downloadUrl={doc.url}
+              viewUrl={doc.url}
+              category={doc.category}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <SectionHeader
+          title="Team branding, FLL, and newsletter archive"
+          description="Reference documents from the legacy Team Voltage library, including the branding guide, FLL Voltage Challenge resources, and archived Varmint Newsletters."
+        />
+        <div className="grid gap-4">
+          {otherResources.map((doc) => (
             <ResourceDownload
               key={doc.title}
               title={doc.title}

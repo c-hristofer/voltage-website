@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     url: siteOrigin,
     siteName: 'Team Voltage 386',
-    images: [`${siteOrigin}${withBasePath('/images/robots/robot-2025.png')}`],
+    images: [`${siteOrigin}${withBasePath('/images/brand/team-voltage-logo.png')}`],
     locale: 'en_US',
     type: 'website'
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Team Voltage 386',
     description: defaultDescription,
-    images: [`${siteOrigin}${withBasePath('/images/robots/robot-2025.png')}`]
+    images: [`${siteOrigin}${withBasePath('/images/brand/team-voltage-logo.png')}`]
   }
 };
 

@@ -50,21 +50,19 @@ export default async function HistoryPage() {
       ) : (
         <div className="space-y-6">
           {years.map((year) => (
-            <section
+            <details
               key={year.slug}
               id={`year-${year.year}`}
-              className="rounded-3xl border border-white/10 bg-surface/50 p-1"
+              className="group rounded-3xl border border-white/10 bg-surface/50 p-4 transition hover:border-white/20"
             >
-              <details className="group rounded-3xl border border-white/5 bg-black/10 p-4 transition hover:border-white/20">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-lg font-semibold text-white">
-                  <span>{year.title || `Season ${year.year}`}</span>
-                  <span className="text-sm text-white/50 transition group-open:rotate-90">⟶</span>
-                </summary>
-                <div className="prose prose-invert mt-4 max-w-none text-white/80">
-                  {year.content}
-                </div>
-              </details>
-            </section>
+              <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-lg font-semibold text-white">
+                <span>{year.title || `Season ${year.year}`}</span>
+                <span className="text-sm text-white/50 transition group-open:rotate-90">⟶</span>
+              </summary>
+              <div className="prose prose-invert mt-4 max-w-none text-white/80">
+                {year.content}
+              </div>
+            </details>
           ))}
         </div>
       )}

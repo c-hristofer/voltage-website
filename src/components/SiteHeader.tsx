@@ -24,14 +24,15 @@ const NAV_LINKS = [
       { label: 'FAQ', href: '/about#faq' }
     ]
   },
-  {
-    label: 'Robots',
-    href: '/robots',
-    children: [
-      { label: '2026 Spotlight', href: '/robots/2026' },
-      { label: 'Past Robots', href: '/robots' }
-    ]
-  },
+  // Archived 2026-04-22: robot section is intentionally hidden from navigation.
+  // {
+  //   label: 'Robots',
+  //   href: '/robots',
+  //   children: [
+  //     { label: '2025 Spotlight', href: '/robots/2025' },
+  //     { label: 'Past Robots', href: '/robots' }
+  //   ]
+  // },
   {
     label: 'Resources',
     href: '/resources',
@@ -47,7 +48,6 @@ const NAV_LINKS = [
     href: '/outreach',
     children: [
       { label: 'Events', href: '/outreach#events' },
-      { label: 'Summer Camp', href: '/outreach/summer-camp' },
       { label: 'Media', href: '/outreach/media' }
     ]
   },
@@ -59,7 +59,8 @@ const NAV_LINKS = [
       { label: 'Donate', href: '/donate' },
       { label: 'Contact', href: '/contact' }
     ]
-  }
+  },
+  { label: "Sparky's STEM Camp", href: '/outreach/summer-camp' }
 ];
 
 // Main site header with responsive navigation and dropdowns.

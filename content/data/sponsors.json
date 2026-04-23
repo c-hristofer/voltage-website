@@ -2,7 +2,7 @@
   "payment": {
     "payableTo": "Brevard Schools Foundation",
     "memo": "Team 386",
-    "mailingAddress": "Brevard Schools Foundation, 2700 Judge Fran Jamieson Way, Viera, FL 32940"
+    "mailingAddress": "Melbourne High Robotics, c/o Bert Johnson, 74 Bulldog Ave, Melbourne, FL 32901"
   },
   "deadlineNote": "Logos for shirts, robots, and banners must be received by January 15.",
   "tiers": [
@@ -24,8 +24,8 @@
       ],
       "sponsors": [
         { "name": "NASA", "logo": "/images/sponsors/nasa.png" },
-        { "name": "L3Harris", "logo": "/images/sponsors/l3harris.png" },
-        { "name": "Leonardo DRS", "logo": "/images/sponsors/leonardo-drs.jpg" }
+        { "name": "Melbourne High School", "logo": "/images/sponsors/melbourne-high-school.png" },
+        { "name": "Davies Family", "logo": "/images/sponsors/davies-family.png" }
       ]
     },
     {
@@ -42,8 +42,8 @@
         "Monthly update newsletter"
       ],
       "sponsors": [
-        { "name": "Boeing", "logo": "/images/sponsors/boeing.png" },
-        { "name": "Haas Automation", "logo": "/images/sponsors/haas.png" }
+        { "name": "L3 Harris", "logo": "/images/sponsors/l3harris.png" },
+        { "name": "Northrop Grumman" }
       ]
     },
     {
@@ -58,9 +58,10 @@
         "Thank-you email"
       ],
       "sponsors": [
-        { "name": "Avidyne", "logo": "/images/sponsors/avidyne.png" },
-        { "name": "Atemis", "logo": "/images/sponsors/atemis.png" },
-        { "name": "Anna's Air & Heat", "logo": "/images/sponsors/annas-air-heat.jpg" }
+        { "name": "Leonardo DRS", "logo": "/images/sponsors/leonardo-drs.jpg" },
+        { "name": "RTX-Raytheon" },
+        { "name": "Bechtel Corporation" },
+        { "name": "Gene Hass" }
       ]
     },
     {
@@ -74,9 +75,9 @@
         "Thank-you email"
       ],
       "sponsors": [
-        { "name": "CCCS", "logo": "/images/sponsors/cccs.png" },
-        { "name": "Reef", "logo": "/images/sponsors/reef.png" },
-        { "name": "Badger Meter", "logo": "/images/sponsors/badger-meter.png" }
+        { "name": "Lockheed Martin" },
+        { "name": "Budco Enterprises", "logo": "/images/sponsors/budco.png" },
+        { "name": "Joe Argento" }
       ]
     },
     {
@@ -87,11 +88,7 @@
         "Company name/logo displayed on team website (X-small)",
         "Thank-you email"
       ],
-      "sponsors": [
-        { "name": "Florida Breeze", "logo": "/images/sponsors/florida-breeze.png" },
-        { "name": "NASA Alumni League", "logo": "/images/sponsors/nasa-alumni.png" },
-        { "name": "Budco Enterprises", "logo": "/images/sponsors/budco.png" }
-      ]
+      "sponsors": []
     }
   ]
 }

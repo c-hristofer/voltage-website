@@ -98,7 +98,7 @@ async function renderMediaPage() {
   const photos = [
     { src: withBasePath('/images/media/event-1.jpg'), alt: 'Students presenting robot' },
     { src: withBasePath('/images/media/event-2.jpg'), alt: 'Voltage pit crew high five' },
-    { src: withBasePath('/images/robots/robot-2024.jpg'), alt: 'Pulse robot climbing' }
+    { src: withBasePath('/images/brand/team-voltage-logo.png'), alt: 'Team Voltage logo' }
   ];
   // Embedded videos shown on the media page.
   const videos = [
@@ -111,7 +111,7 @@ async function renderMediaPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-12 px-4 py-12 lg:px-6">
       <PageHeader
-        title="Media & press kit"
+        title="Branding Guidelines"
         description="Approved photography, logo files, color values, and boilerplate copy."
         breadcrumbs={[
           { label: 'Home', href: '/' },

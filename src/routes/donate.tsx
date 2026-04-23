@@ -24,7 +24,7 @@ export default async function DonatePage() {
       />
       <div className="rounded-3xl border border-white/10 bg-surface/70 p-6 space-y-4">
         <p className="text-sm text-white/80">
-          Make checks payable to <strong>{sponsors.payment.payableTo}</strong> and include “{sponsors.payment.memo}” on the memo line to ensure funds reach Voltage 386. Mail to: {sponsors.payment.mailingAddress ?? 'Brevard Schools Foundation, 2700 Judge Fran Jamieson Way, Viera, FL 32940'}.
+          Make checks payable to <strong>{sponsors.payment.payableTo}</strong> and include “{sponsors.payment.memo}” on the memo line to ensure funds reach Voltage 386. Mail to: {sponsors.payment.mailingAddress ?? 'Melbourne High Robotics, c/o Bert Johnson, 74 Bulldog Ave, Melbourne, FL 32901'}.
         </p>
         <p className="text-sm text-white/80">For ACH, in-kind donations, or employer matches, email teamvoltage386@gmail.com so we can coordinate receipts and recognition.</p>
         <div className="flex flex-wrap gap-3">
