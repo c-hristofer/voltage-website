@@ -6,7 +6,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { getSocials, getTeamData } from '@/lib/content';
 import { warmMdxCompiler } from '@/lib/mdx';
-import { getSiteOrigin, withBasePath } from '@/lib/paths';
+import { getSiteOrigin } from '@/lib/paths';
 import { serializeJsonLd } from '@/lib/security';
 
 // Shared class names grouped here to keep JSX cleaner.
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     url: siteOrigin,
     siteName: 'Team Voltage 386',
-    images: [`${siteOrigin}${withBasePath('/images/brand/team-voltage-logo.png')}`],
+    images: [`${siteOrigin}/images/brand/team-voltage-logo.png`],
     locale: 'en_US',
     type: 'website'
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Team Voltage 386',
     description: defaultDescription,
-    images: [`${siteOrigin}${withBasePath('/images/brand/team-voltage-logo.png')}`]
+    images: [`${siteOrigin}/images/brand/team-voltage-logo.png`]
   }
 };
 
