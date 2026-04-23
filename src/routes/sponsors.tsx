@@ -48,7 +48,7 @@ export default async function SponsorsPage() {
       </section>
       <section className="rounded-3xl border border-white/10 bg-card/70 p-6">
         <SectionHeader eyebrow="Team history" title="Remembering Mark Senti" />
-        <p className="text-sm leading-relaxed text-white/75">
+        <p className="text-sm leading-relaxed text-slate-900 dark:text-white/75">
           Mark Senti was Team Voltage’s first major sponsor and a vital supporter in our early years. He provided workspace at
           GSMA, scrap materials, and access to hardware supplies before the team moved to Melbourne High School. His support
           gave Voltage a strong foundation, and early mentors remember how often he stepped in with parts when the team needed

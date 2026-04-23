@@ -136,7 +136,10 @@ export default async function HomePage() {
         />
         <div className="glass-panel mt-6 grid gap-4 rounded-3xl border border-white/10 bg-card/70 p-6 sm:grid-cols-2 lg:grid-cols-4">
           {sponsorLogos.map((sponsor) => (
-            <div key={sponsor.name} className="flex items-center justify-center rounded-2xl bg-white/5 p-3">
+            <div
+              key={sponsor.name}
+              className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_15px_35px_rgba(0,0,0,0.25)]"
+            >
               {sponsor.logo ? (
                 <Image
                   src={sponsor.logo}
@@ -146,7 +149,7 @@ export default async function HomePage() {
                   className="h-16 w-auto object-contain"
                 />
               ) : (
-                <p className="text-sm font-semibold text-white">{sponsor.name}</p>
+                <p className="text-sm font-semibold text-slate-900">{sponsor.name}</p>
               )}
             </div>
           ))}
