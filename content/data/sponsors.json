@@ -24,6 +24,7 @@
       ],
       "sponsors": [
         { "name": "NASA", "logo": "/images/sponsors/nasa.png" },
+        { "name": "Step It Up Foundation", "logo": "/images/sponsors/step-it-up-foundation.png" },
         { "name": "Melbourne High School", "logo": "/images/sponsors/melbourne-high-school.png" },
         { "name": "Davies Family", "logo": "/images/sponsors/davies-family.png" }
       ]
@@ -43,7 +44,7 @@
       ],
       "sponsors": [
         { "name": "L3 Harris", "logo": "/images/sponsors/l3harris.png" },
-        { "name": "Northrop Grumman" }
+        { "name": "Northrop Grumman", "logo": "/images/sponsors/northrop-grumman.png" }
       ]
     },
     {
@@ -59,9 +60,9 @@
       ],
       "sponsors": [
         { "name": "Leonardo DRS", "logo": "/images/sponsors/leonardo-drs.jpg" },
-        { "name": "RTX-Raytheon" },
-        { "name": "Bechtel Corporation" },
-        { "name": "Gene Hass" }
+        { "name": "RTX-Raytheon", "logo": "/images/sponsors/rtx-raytheon.png" },
+        { "name": "Bechtel Corporation", "logo": "/images/sponsors/bechtel-corporation.png" },
+        { "name": "Gene Hass", "logo": "/images/sponsors/haas.png" }
       ]
     },
     {
@@ -75,9 +76,9 @@
         "Thank-you email"
       ],
       "sponsors": [
-        { "name": "Lockheed Martin" },
-        { "name": "Budco Enterprises", "logo": "/images/sponsors/budco.png" },
-        { "name": "Joe Argento" }
+        { "name": "Lockheed Martin", "logo": "/images/sponsors/lockheed-martin.png" },
+        { "name": "Boeing", "logo": "/images/sponsors/boeing.png" },
+        { "name": "Budco Enterprises", "logo": "/images/sponsors/budco.png" }
       ]
     },
     {
