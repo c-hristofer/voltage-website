@@ -42,6 +42,9 @@ const campSlides = campSlideSources.map((slide) => ({
   src: withBasePath(slide.src)
 }));
 
+const summerCampSignupForm =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe3U2Bnf95vUFPJTd0Hvlr0yunH3ZsxZsWde8_0NzQoq1sxQw/viewform';
+
 // True when the slug is a supported outreach detail page.
 function isOutreachSlug(value: string): value is OutreachSlug {
   return OUTREACH_SLUGS.includes(value as OutreachSlug);
@@ -185,6 +188,9 @@ async function renderSummerCampPage() {
           { label: 'Summer Camp' }
         ]}
       />
+      <div className="flex justify-start">
+        <CTAButton href={summerCampSignupForm} label="Sign Up for Camp" />
+      </div>
       <section id="flyer" className="space-y-6">
         <SectionHeader title="Summer camp flyer" />
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
