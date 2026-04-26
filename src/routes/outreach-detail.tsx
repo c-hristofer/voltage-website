@@ -206,12 +206,11 @@ async function renderSummerCampPage() {
           </div>
           <div className="flex-1 rounded-3xl border border-white/10 bg-card/70 p-6 text-sm text-white/80">
             <p className="text-base text-white">
-              Using tools like Snap Circuits and creative design challenges, campers learn fundamental STEM concepts in a
-              fun, approachable way.
+              Come learn Mechanical, Electrical, and Software Engineering concepts with Team Voltage.
             </p>
             <p className="mt-4 text-sm text-white/80">Some favorite activities from past camps include:</p>
             <ul className="mt-3 space-y-2 text-base text-white">
-              <li>🦾 Robotic Arm</li>
+              <li>🔌 Sparky&apos;s Circuits</li>
               <li>📿 Binary Bracelet</li>
               <li>🪄 Harry Potter wand</li>
               <li>🤖 Driving our competition robot</li>
