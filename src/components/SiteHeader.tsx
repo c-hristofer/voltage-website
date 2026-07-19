@@ -221,6 +221,12 @@ export default function SiteHeader() {
           </ul>
         </nav>
       </div>
+      <Link
+        href="/resources/join-team"
+        className="block bg-[#ffe800] px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.18em] text-[#0429d2] transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0429d2] sm:text-sm"
+      >
+        Sign up for the new 2026-2027 season
+      </Link>
     </header>
   );
 }
