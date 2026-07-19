@@ -221,12 +221,6 @@ export default function SiteHeader() {
           </ul>
         </nav>
       </div>
-      <Link
-        href="/outreach/summer-camp"
-        className="block bg-[#ffe800] px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.18em] text-[#0429d2] transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-sm"
-      >
-        Registration for Sparky&apos;s Steam Camp Now Open. Click Here to Register
-      </Link>
     </header>
   );
 }

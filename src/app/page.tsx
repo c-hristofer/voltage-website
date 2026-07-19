@@ -62,6 +62,31 @@ export default async function HomePage() {
       <section className="glass-panel rounded-3xl border border-white/10 bg-gradient-to-r from-primary/30 via-primary/10 to-surface/70 p-8 text-white">
         <div className="space-y-6 text-white/90">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">↓ Upcoming Voltage Nights ↓</p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-[#ffe800]/40 bg-[#ffe800]/10 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ffe800]">New student kickoff</p>
+              <h2 className="mt-2 font-display text-2xl text-white">Late August or early September</h2>
+              <p className="mt-2 text-sm leading-relaxed text-white/85">
+                New student kickoff will be at Melbourne High School. Details will be updated here and on Instagram{' '}
+                <a
+                  href="https://www.instagram.com/teamvoltage386/"
+                  className="font-semibold text-[#ffe800] underline decoration-[#ffe800]/50 underline-offset-4 hover:text-white"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  (@teamvoltage386)
+                </a>{' '}
+                as soon as they are available.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Mark your calendars</p>
+              <h2 className="mt-2 font-display text-2xl text-white">Space Coast ShowDown</h2>
+              <p className="mt-2 text-sm leading-relaxed text-white/85">
+                Team Voltage&apos;s offseason competition is scheduled for <span className="font-semibold text-[#ffe800]">September 26</span>.
+              </p>
+            </div>
+          </div>
           <div className="space-y-3 text-white dark:text-white">
             <h1 className="font-display text-4xl text-white">Team Voltage meets every Monday</h1>
             <p className="text-base leading-relaxed text-foreground dark:text-white/90">
