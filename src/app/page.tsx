@@ -29,6 +29,21 @@ export default async function HomePage() {
     .slice(0, 8);
   return (
     <div className="mx-auto max-w-6xl space-y-16 px-4 py-10 lg:space-y-24 lg:px-6">
+      <section>
+        <div className="glass-panel rounded-3xl border border-white/10 bg-card/70 p-8">
+          <div className="space-y-4 text-center text-white/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Follow Voltage</p>
+            <h2 className="font-display text-3xl text-white">Live from @teamvoltage386</h2>
+            <p className="text-sm">
+              Highlights from Monday build nights, Sparky’s STEAM Camp, and competition pits update in real time.
+            </p>
+          </div>
+          <div className="mt-6 flex justify-center">
+            <InstagramEmbed className="w-full max-w-xl" />
+          </div>
+        </div>
+      </section>
+
       <section className="glass-panel grid gap-8 rounded-3xl p-5 sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
         <div className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
@@ -134,21 +149,6 @@ export default async function HomePage() {
             <Link href="/resources/join-team" className="text-white hover:text-accent">
               Learn how joining works →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="glass-panel rounded-3xl border border-white/10 bg-card/70 p-8">
-          <div className="space-y-4 text-center text-white/80">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Follow Voltage</p>
-            <h2 className="font-display text-3xl text-white">Live from @teamvoltage386</h2>
-            <p className="text-sm">
-              Highlights from Monday build nights, Sparky’s STEAM Camp, and competition pits update in real time.
-            </p>
-          </div>
-          <div className="mt-6 flex justify-center">
-            <InstagramEmbed className="w-full max-w-xl" />
           </div>
         </div>
       </section>
