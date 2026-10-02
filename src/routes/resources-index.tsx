@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // Labels for pre season titles so copy stays consistent.
 const PRE_SEASON_TITLES = ['New / Interested Student Signup', 'Safety Quiz', 'Student Contract', 'Student Information Form'];
 // Labels for form titles so copy stays consistent.
-const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Student Handbook', 'Photograph Release Form'];
+const FORM_TITLES = ['Meeting Permission Form', 'Medical Release Form', 'Photograph Release Form'];
 
 // Renders the resources page.
 export default async function ResourcesPage() {
@@ -68,8 +68,20 @@ export default async function ResourcesPage() {
       <section className="space-y-4">
         <SectionHeader
           title="Forms"
-          description="Print, sign, and turn in the meeting permission form, medical release, and student handbook within the first two weeks of joining. The medical release must be notarized."
+          description="Print, sign, and turn in the meeting permission form and medical release within the first two weeks of joining. The medical release must be notarized."
         />
+        <p className="text-sm text-white/80">
+          All students are expected to behave in accordance with the Brevard Public Schools Student Handbook and{' '}
+          <a
+            href="https://www.brevardschools.org/o/bps/page/code-of-student-conduct"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-primary-light underline"
+          >
+            Code of Conduct
+          </a>
+          .
+        </p>
         <div className="grid gap-4">
           {forms.map((doc) => (
             <ResourceDownload
